@@ -1,1 +1,8 @@
-# Tarantula_MTSK
+# Tarantula_MTSK![personel](https://github.com/user-attachments/assets/dc7cf49a-7f8c-4952-9bf6-99915b31a7db)
+![Giris_Form](https://github.com/user-attachments/assets/1464085e-89ea-4f65-8884-f8e3c3c7eac5)
+![Donemler](https://github.com/user-attachments/assets/565377f6-02a3-4a3c-ad46-b28ccd6fe254)
+![Arama](https://github.com/user-attachments/assets/3aacb533-d56d-45db-918e-f1607048226a)
+![araclar](https://github.com/user-attachments/assets/7bbcf1ed-c17b-4ef5-ab10-b2e8cd24a319)
+![Ana_form](https://github.com/user-attachments/assets/e0dac5d0-c156-4c97-8c4c-85fe886945fc)
+![Seting](https://github.com/user-attachments/assets/7bec2476-4fbc-4b2e-9c53-59a4a1f2d80e)
+![Server_Giris](https://github.com/user-attachments/assets/c3063e01-6ad5-4451-a2da-926fc6f40cbd)
