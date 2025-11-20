@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Tarantula_MTSK.exe" version="1.0.0.1" publicKeyToken="96a1f26a3e4aeff8" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Taraantula.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Tarantula_MTSK" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Tarantula_MTSK.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Bildirim Seçenekleri
+          Windows Kullanıcı Hesabı Denetimi düzeyini değiştirmek istiyorsanız,
+           requestedExecutionLevel düğümünü aşağıdakilerden biriyle değiştirin.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Geriye dönük uyumluluk için Dosya ve Kayıt Defteri Sanallaştırması
+         kullanmak istiyorsanız, requestedExecutionLevel düğümünü silin.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.WIA.dll" size="34816">
+      <assemblyIdentity name="Interop.WIA" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Dxm0nELkEAxBsj4jebF8WjFFwixem4Fe4OGpgonLZdM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.dll" size="2339584">
+      <assemblyIdentity name="Leadtools" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>rRw0BWkilqbZDsRrcey7xPSspPqiIbKtpbXtQvn/jis=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Async.dll" size="141056">
+      <assemblyIdentity name="Leadtools.Async" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>85Rx+FTDo/LyahDZl0T9/MtDWdsMX7JNFdQHP0H37ac=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Codecs.dll" size="971520">
+      <assemblyIdentity name="Leadtools.Codecs" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>KvevJlKTzyu/SSlEJ5+DVKIPT2wh4vqMgjDFXmUxIcI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.ColorConversion.dll" size="2287360">
+      <assemblyIdentity name="Leadtools.ColorConversion" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zOfyNkYmTEGSofborGbc+8lo+AdVRxiuVWLwPFF+/PI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Document.Core.dll" size="1129216">
+      <assemblyIdentity name="Leadtools.Document.Core" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>T8TioYXO0DIApcnOK1ASFnro3wS6Ti+yZivr7zCulg8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Drawing.dll" size="619264">
+      <assemblyIdentity name="Leadtools.Drawing" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>qWOL+sSwrbQtpHfHVcTnB/gEqLXaVQNv1drVpprKjA8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Drawing.MP.dll" size="5678336">
+      <assemblyIdentity name="Leadtools.Drawing.MP" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vjuy3koMgjdfOYe1Ct5ukDdshScfd6c1iQ+qikuJfI4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Logging.dll" size="150784">
+      <assemblyIdentity name="Leadtools.Logging" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nbxEMukAR0N/APRjOtNOCkPb3fyJVSQcg5cM644/Z/I=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Svg.dll" size="2484480">
+      <assemblyIdentity name="Leadtools.Svg" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yGWsUnvyO497R8jFw/DnvLMiMK2oaWMFuDLRxKMm0zY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Leadtools.Wia.dll" size="429312">
+      <assemblyIdentity name="Leadtools.Wia" version="23.0.4.0" publicKeyToken="9CF889F53EA9B907" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>p7sXT4aXUof9yMWbaTDdLwMkW8D4vK6hFVkJx9h1dpw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Configuration.ConfigurationManager.dll" size="95496">
+      <assemblyIdentity name="System.Configuration.ConfigurationManager" version="10.0.0.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>4WwtnFe+GaYsCIDc2r9EQ4MpQJ8n0MYGKdeV1LrIMGU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tarantula_MTSK.exe" size="1597984">
+      <assemblyIdentity name="Tarantula_MTSK" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Fv8f1HF6U4mfjfjr/CL33hb75JP2CQKQzcWvIW0ZOHo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Leadtools.Codecs.Bmp.dll" size="209664">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>qNXqDUzeKg8+bUA+MabAH5exVrgwE43PQq/1ZNwBr6c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Cmp.dll" size="745728">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2tHImMJBOZihS8KYiaMQLZ1dRv49QiunlZmwDBOSLus=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Cmw.dll" size="621312">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>1qCN0M+bncFQLY8D/uHMZbrIOLLSZ6J/TfFuEcn1z08=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Fax.dll" size="290048">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>WoieVIZMmEGrs9fHXPbj4JakLscUNMh2EH/dDz8aaJQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Gif.dll" size="209664">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>vtSoNe/JSjUVGwI14BOw+PnDHM9ICMF+vevrjYiBdPo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.J2k.dll" size="451840">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>YAPT54E/BlOVfTNsrhjXWqwRqXFQkcHuhdcpBHem4+A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Jb2.dll" size="996096">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>V0PqzA3r/0mlicVbrqjgkxboSGWumjPGzoQPaVjmzzE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Jbg.dll" size="241920">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>mhICXty7NP1uTOIB7ej5aRiTc+bv67q7z1nNSGPvyOc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Png.dll" size="536832">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>cP20HBvdKxAfjQScDxtAKtqinqmURruZ/QYZz5EgSiw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Raw.dll" size="190720">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Fxz9m0++OSbtInlNfT6qFN8Pao1S/9t2p89b6t8uEB0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Leadtools.Codecs.Tif.dll" size="466176">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>VwrBTTMrTnUWud0gL8q4VuV8HHBzz6mK0h7fVSP8Dpo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ltsqliteu.dll" size="399616">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>BZ3lu5+HQl30eSBhHqx3KYG+eVlCZ+Au/YMeUlX/j3Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Taraantula.ico" size="131134">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xAC358lXBulyZKJZyhIe4aZfDLp0efQaNGOlS9j4Csw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Tarantula_MTSK.exe.config" size="179">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KK22eqIcmhgANdEql50c4Q2FO3lxhd2jbhnGHFL60ts=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-8F0C5UI\metrosürücükursu" issuerKeyHash="1e6858948f7bb60948dcd7f1b3298ddf2759e24a" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>uDjI5URhU+DO0BEivaGDc+t3zTza2xNnUBSOte1baTA=</DigestValue></Reference></SignedInfo><SignatureValue>uRdvK0Po/WBv3aWuytb+33wZE6CrqRutxTDSHE640Nas5a6udCY0UGxrTZY9Usb33cBeMbdocj5lh/2hSoa7b8jzz2VO14Y4oSaTqOul0p+8+mpJfE1NbQ3zooPUwC7ALgaULdO3SnYJ47NIo8D0DcV57ppOI2drZNtFgSdejIU=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>yPoB0PNSRgw21kw649w6zEzEXyoZ6K8LNbJ4M6K6RjRy3umYd9MEw+utSAZDbt+kO0LRLYZNJcOmFnyGckPqZ2wp3lUHzZdb3HcBDIQIQ5XX8uxlTajvp829Hmza4Xz4oyM8KiWE+A3dLxgvvW9u9ouUERzt3xpC1JuvXoEJTe0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="30695bedb58e14506713dbda3ccd77eb7383a1bd2211d0cee0536144e5c838b8" Description="" Url=""><as:assemblyIdentity name="Tarantula_MTSK.exe" version="1.0.0.1" publicKeyToken="96a1f26a3e4aeff8" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-8F0C5UI\metrosürücükursu</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>r2cYXcFo0yxiWiZzSN3aLfUjS5Gzpr+spXh0QA2JxjA=</DigestValue></Reference></SignedInfo><SignatureValue>ietMSfpodjDxbyMhuz2nYx6re2tofOcerBkNTZMY69hfdFG1TwhvKO+IrWCVyP7LbDIvODNt6MXy+1aB7833BYjoOluaVtmGLlU9nzgW8CKANX/z2M4XYabajxxSvvtAW2CWz5CnGg+MZKoBi7BSVa2mFFOjzMee1VVXDFJ+AVg=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>yPoB0PNSRgw21kw649w6zEzEXyoZ6K8LNbJ4M6K6RjRy3umYd9MEw+utSAZDbt+kO0LRLYZNJcOmFnyGckPqZ2wp3lUHzZdb3HcBDIQIQ5XX8uxlTajvp829Hmza4Xz4oyM8KiWE+A3dLxgvvW9u9ouUERzt3xpC1JuvXoEJTe0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICGTCCAYKgAwIBAgIQUXsgwWYBMLBH7HgtbpdwoDANBgkqhkiG9w0BAQsFADBLMUkwRwYDVQQDHkAARABFAFMASwBUAE8AUAAtADgARgAwAEMANQBVAEkAXABtAGUAdAByAG8AcwD8AHIA/ABjAPwAawB1AHIAcwB1MB4XDTI1MTEwNjA2NTI1MVoXDTI2MTEwNjEyNTI1MVowSzFJMEcGA1UEAx5AAEQARQBTAEsAVABPAFAALQA4AEYAMABDADUAVQBJAFwAbQBlAHQAcgBvAHMA/AByAPwAYwD8AGsAdQByAHMAdTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAyPoB0PNSRgw21kw649w6zEzEXyoZ6K8LNbJ4M6K6RjRy3umYd9MEw+utSAZDbt+kO0LRLYZNJcOmFnyGckPqZ2wp3lUHzZdb3HcBDIQIQ5XX8uxlTajvp829Hmza4Xz4oyM8KiWE+A3dLxgvvW9u9ouUERzt3xpC1JuvXoEJTe0CAwEAATANBgkqhkiG9w0BAQsFAAOBgQCeOPx9o1l0Usva3FHHLN2v/V0MY/QQhEP1psh4te/PNGGt2y5cKbaQM0SzlF3+KOvn8s3iTkXtHkDAFiC4QJOlGsu2h04Pl/CVgv7Bgnv86LeCZPdQ2g2lW96BGjzVqG5cESY0wbj05dEcnd9WAtH7ZO3TfSo7IrMUltBNjy7rmA==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
