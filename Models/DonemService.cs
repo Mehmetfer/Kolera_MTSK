@@ -15,18 +15,15 @@ namespace Tarantula_MTSK.Services
             _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
 
-        // Örnek dönem listesi
-        public async Task<List<string>> GetDonemListAsync()
+        // Boş metotlar artık Task.FromResult ile dönüyor
+        public Task<List<string>> GetDonemListAsync()
         {
-            await Task.CompletedTask; // async yapıyı korumak için
-            return new List<string>();
+            return Task.FromResult(new List<string>());
         }
 
-        // Örnek kursiyer dönemi
-        public async Task<string> GetKursiyerDonemiAsync(int kursiyerId)
+        public Task<string> GetKursiyerDonemiAsync(int kursiyerId)
         {
-            await Task.CompletedTask;
-            return string.Empty;
+            return Task.FromResult(string.Empty);
         }
 
         public async Task<(List<string> Donemler, string KursiyerDonemi)> GetDonemlerVeKursiyerDonemiAsync(int kursiyerId)
@@ -38,43 +35,40 @@ namespace Tarantula_MTSK.Services
 
         public async Task<DataTable> GetGrupKartlariAsync()
         {
-            DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            var dt = new DataTable();
+            using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM GRUP_KARTI", connection))
+                using (var cmd = new SqlCommand("SELECT * FROM GRUP_KARTI ORDER BY BAS_TAR DESC, BIT_TAR DESC", connection))
+                using (var da = new SqlDataAdapter(cmd))
                 {
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
+                    da.Fill(dt); // SqlDataAdapter.Fill senkron olduğu için await yok, sorun değil
                 }
             }
             return dt;
         }
 
-        public async Task<int> AddGrupAsync(int yil, int ay, string sube, string donemAdi, string grupAdi, DateTime baslangic, DateTime bitis)
+        // AddGrupAsync artık ay string olarak kaydediyor
+        public async Task<int> AddGrupAsync(int yil, string ay, string sube, string donemAdi, string grupAdi, DateTime baslangic, DateTime bitis)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
-
-                string sql = @"INSERT INTO GRUP_KARTI 
-                               (DONEM_YILI, DONEM_AYI, DONEM_SUBESI, DONEM_ADI, DONEM_GRUBU, BAS_TAR, BIT_TAR)
-                               VALUES (@Yil, @Ay, @Sube, @DonemAdi, @GrupAdi, @Baslangic, @Bitis);
-                               SELECT SCOPE_IDENTITY();";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
+                using (var cmd = new SqlCommand(
+                    @"INSERT INTO GRUP_KARTI 
+                      (DONEM_YILI, DONEM_AYI, DONEM_SUBESI, DONEM_ADI, DONEM_GRUBU, BAS_TAR, BIT_TAR) 
+                      VALUES (@Yil, @Ay, @Sube, @DonemAdi, @GrupAdi, @Baslangic, @Bitis); 
+                      SELECT SCOPE_IDENTITY();", connection))
                 {
-                    command.Parameters.AddWithValue("@Yil", yil);
-                    command.Parameters.AddWithValue("@Ay", ay);
-                    command.Parameters.AddWithValue("@Sube", sube);
-                    command.Parameters.AddWithValue("@DonemAdi", donemAdi);
-                    command.Parameters.AddWithValue("@GrupAdi", grupAdi);
-                    command.Parameters.AddWithValue("@Baslangic", baslangic);
-                    command.Parameters.AddWithValue("@Bitis", bitis);
+                    cmd.Parameters.AddWithValue("@Yil", yil);
+                    cmd.Parameters.AddWithValue("@Ay", ay);
+                    cmd.Parameters.AddWithValue("@Sube", sube);
+                    cmd.Parameters.AddWithValue("@DonemAdi", donemAdi);
+                    cmd.Parameters.AddWithValue("@GrupAdi", grupAdi);
+                    cmd.Parameters.AddWithValue("@Baslangic", baslangic);
+                    cmd.Parameters.AddWithValue("@Bitis", bitis);
 
-                    var result = await command.ExecuteScalarAsync();
+                    var result = await cmd.ExecuteScalarAsync();
                     return Convert.ToInt32(result);
                 }
             }
@@ -82,36 +76,34 @@ namespace Tarantula_MTSK.Services
 
         public async Task<int> UpdateGrupAsync(int id, string donemAdi, string grupAdi, DateTime baslangic, DateTime bitis)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
-
-                string sql = @"UPDATE GRUP_KARTI 
-                               SET DONEM_ADI=@DonemAdi, DONEM_GRUBU=@GrupAdi, BAS_TAR=@Baslangic, BIT_TAR=@Bitis
-                               WHERE ID=@Id";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
+                using (var cmd = new SqlCommand(
+                    @"UPDATE GRUP_KARTI 
+                      SET DONEM_ADI=@DonemAdi, DONEM_GRUBU=@GrupAdi, BAS_TAR=@Baslangic, BIT_TAR=@Bitis
+                      WHERE ID=@Id", connection))
                 {
-                    command.Parameters.AddWithValue("@Id", id);
-                    command.Parameters.AddWithValue("@DonemAdi", donemAdi);
-                    command.Parameters.AddWithValue("@GrupAdi", grupAdi);
-                    command.Parameters.AddWithValue("@Baslangic", baslangic);
-                    command.Parameters.AddWithValue("@Bitis", bitis);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.Parameters.AddWithValue("@DonemAdi", donemAdi);
+                    cmd.Parameters.AddWithValue("@GrupAdi", grupAdi);
+                    cmd.Parameters.AddWithValue("@Baslangic", baslangic);
+                    cmd.Parameters.AddWithValue("@Bitis", bitis);
 
-                    return await command.ExecuteNonQueryAsync();
+                    return await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
         public async Task<int> DeleteGrupAsync(int id)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
-                using (SqlCommand command = new SqlCommand("DELETE FROM GRUP_KARTI WHERE ID=@Id", connection))
+                using (var cmd = new SqlCommand("DELETE FROM GRUP_KARTI WHERE ID=@Id", connection))
                 {
-                    command.Parameters.AddWithValue("@Id", id);
-                    return await command.ExecuteNonQueryAsync();
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    return await cmd.ExecuteNonQueryAsync();
                 }
             }
         }

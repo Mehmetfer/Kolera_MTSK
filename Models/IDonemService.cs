@@ -9,14 +9,11 @@ namespace Tarantula_MTSK.Services
     {
         Task<List<string>> GetDonemListAsync();
         Task<string> GetKursiyerDonemiAsync(int kursiyerId);
-
         Task<(List<string> Donemler, string KursiyerDonemi)> GetDonemlerVeKursiyerDonemiAsync(int kursiyerId);
-
         Task<DataTable> GetGrupKartlariAsync();
 
-        // 7 parametreli Add
-        Task<int> AddGrupAsync(int yil, int ay, string sube, string donemAdi, string grupAdi, DateTime baslangic, DateTime bitis);
-
+        // Ay artık string olacak
+        Task<int> AddGrupAsync(int yil, string ay, string sube, string donemAdi, string grupAdi, DateTime baslangic, DateTime bitis);
         Task<int> UpdateGrupAsync(int id, string donemAdi, string grupAdi, DateTime baslangic, DateTime bitis);
         Task<int> DeleteGrupAsync(int id);
     }
