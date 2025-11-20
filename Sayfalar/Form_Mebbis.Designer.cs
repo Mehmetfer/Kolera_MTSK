@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Mebbis));
-            this.Labelmebbis = new System.Windows.Forms.Label();
             this.Tab_Mebbis = new System.Windows.Forms.TabControl();
             this.Tab_Mebbis1 = new System.Windows.Forms.TabPage();
             this.Dtg_Donemlerlistele = new System.Windows.Forms.DataGridView();
             this.Combo_Donemler = new System.Windows.Forms.ComboBox();
             this.Tab_Mebbis2 = new System.Windows.Forms.TabPage();
-            this.Tab_Mebbis3 = new System.Windows.Forms.TabPage();
+            this.Web_Mebbis = new System.Windows.Forms.WebBrowser();
             this.Grup_Menu = new System.Windows.Forms.GroupBox();
             this.Panel_Ana = new System.Windows.Forms.Panel();
             this.Btn_ogrn = new System.Windows.Forms.Button();
@@ -46,6 +45,7 @@
             this.Alt_Resim_Kayit2 = new System.Windows.Forms.Button();
             this.Alt_Resim_Kayit = new System.Windows.Forms.Button();
             this.Btn_Resim_Kayit = new System.Windows.Forms.Button();
+            this.Tab_Mebbis3 = new System.Windows.Forms.TabPage();
             this.Grp_1 = new System.Windows.Forms.GroupBox();
             this.Tnk_RESIM_Kursiyer = new System.Windows.Forms.PictureBox();
             this.Grp_2 = new System.Windows.Forms.GroupBox();
@@ -66,16 +66,13 @@
             this.Lbl_2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.Grp_4 = new System.Windows.Forms.GroupBox();
-            this.Text_Donem = new System.Windows.Forms.TextBox();
+            this.TxtKullaniciAd = new System.Windows.Forms.TextBox();
             this.Lbl_Grp = new System.Windows.Forms.Label();
-            this.PictureBox4 = new System.Windows.Forms.PictureBox();
-            this.Btn_Sil = new System.Windows.Forms.Button();
-            this.Btn_Evrak = new System.Windows.Forms.Button();
-            this.Btn_Kaydet = new System.Windows.Forms.Button();
-            this.PictureBox1 = new System.Windows.Forms.PictureBox();
+            this.TxtSifre = new System.Windows.Forms.TextBox();
             this.Tab_Mebbis.SuspendLayout();
             this.Tab_Mebbis1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtg_Donemlerlistele)).BeginInit();
+            this.Tab_Mebbis2.SuspendLayout();
             this.Grup_Menu.SuspendLayout();
             this.Panel_Ana.SuspendLayout();
             this.Alt_donem.SuspendLayout();
@@ -85,25 +82,14 @@
             this.Grp_2.SuspendLayout();
             this.Grp_3.SuspendLayout();
             this.Grp_4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Labelmebbis
-            // 
-            this.Labelmebbis.AutoSize = true;
-            this.Labelmebbis.Location = new System.Drawing.Point(999, 202);
-            this.Labelmebbis.Name = "Labelmebbis";
-            this.Labelmebbis.Size = new System.Drawing.Size(41, 13);
-            this.Labelmebbis.TabIndex = 0;
-            this.Labelmebbis.Text = "Mebbis";
             // 
             // Tab_Mebbis
             // 
             this.Tab_Mebbis.Controls.Add(this.Tab_Mebbis1);
             this.Tab_Mebbis.Controls.Add(this.Tab_Mebbis2);
             this.Tab_Mebbis.Controls.Add(this.Tab_Mebbis3);
-            this.Tab_Mebbis.Location = new System.Drawing.Point(2, 297);
+            this.Tab_Mebbis.Location = new System.Drawing.Point(12, 161);
             this.Tab_Mebbis.Name = "Tab_Mebbis";
             this.Tab_Mebbis.SelectedIndex = 0;
             this.Tab_Mebbis.Size = new System.Drawing.Size(1351, 631);
@@ -141,6 +127,8 @@
             // 
             // Tab_Mebbis2
             // 
+            this.Tab_Mebbis2.Controls.Add(this.Web_Mebbis);
+            this.Tab_Mebbis2.Controls.Add(this.Grup_Menu);
             this.Tab_Mebbis2.Location = new System.Drawing.Point(4, 22);
             this.Tab_Mebbis2.Name = "Tab_Mebbis2";
             this.Tab_Mebbis2.Padding = new System.Windows.Forms.Padding(3);
@@ -149,23 +137,22 @@
             this.Tab_Mebbis2.Text = "Mebbis Aktarım İşlemleri";
             this.Tab_Mebbis2.UseVisualStyleBackColor = true;
             // 
-            // Tab_Mebbis3
+            // Web_Mebbis
             // 
-            this.Tab_Mebbis3.Location = new System.Drawing.Point(4, 22);
-            this.Tab_Mebbis3.Name = "Tab_Mebbis3";
-            this.Tab_Mebbis3.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Mebbis3.Size = new System.Drawing.Size(1343, 605);
-            this.Tab_Mebbis3.TabIndex = 2;
-            this.Tab_Mebbis3.Text = "Evrak Kontrol";
-            this.Tab_Mebbis3.UseVisualStyleBackColor = true;
+            this.Web_Mebbis.Location = new System.Drawing.Point(236, 10);
+            this.Web_Mebbis.MinimumSize = new System.Drawing.Size(20, 20);
+            this.Web_Mebbis.Name = "Web_Mebbis";
+            this.Web_Mebbis.Size = new System.Drawing.Size(1101, 526);
+            this.Web_Mebbis.TabIndex = 3;
+            this.Web_Mebbis.Url = new System.Uri("https://mebbis.meb.gov.tr/SKT/skt02008.aspx", System.UriKind.Absolute);
             // 
             // Grup_Menu
             // 
             this.Grup_Menu.Controls.Add(this.Panel_Ana);
-            this.Grup_Menu.Location = new System.Drawing.Point(885, 130);
+            this.Grup_Menu.Location = new System.Drawing.Point(14, 15);
             this.Grup_Menu.Name = "Grup_Menu";
-            this.Grup_Menu.Size = new System.Drawing.Size(216, 205);
-            this.Grup_Menu.TabIndex = 0;
+            this.Grup_Menu.Size = new System.Drawing.Size(216, 249);
+            this.Grup_Menu.TabIndex = 1;
             this.Grup_Menu.TabStop = false;
             this.Grup_Menu.Text = "groupBox1";
             // 
@@ -179,7 +166,7 @@
             this.Panel_Ana.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_Ana.Location = new System.Drawing.Point(3, 16);
             this.Panel_Ana.Name = "Panel_Ana";
-            this.Panel_Ana.Size = new System.Drawing.Size(200, 186);
+            this.Panel_Ana.Size = new System.Drawing.Size(200, 230);
             this.Panel_Ana.TabIndex = 0;
             // 
             // Btn_ogrn
@@ -255,7 +242,6 @@
             this.Alt_Resim_Kayit.TabIndex = 0;
             this.Alt_Resim_Kayit.Text = "Resim Ekle";
             this.Alt_Resim_Kayit.UseVisualStyleBackColor = true;
-            this.Alt_Resim_Kayit.Click += new System.EventHandler(this.Alt_Resim_Kayit_Click);
             // 
             // Btn_Resim_Kayit
             // 
@@ -268,11 +254,22 @@
             this.Btn_Resim_Kayit.TabIndex = 0;
             this.Btn_Resim_Kayit.Text = "RESİM KAYIT";
             this.Btn_Resim_Kayit.UseVisualStyleBackColor = true;
+            this.Btn_Resim_Kayit.Click += new System.EventHandler(this.Btn_Resim_Kayit_Click);
+            // 
+            // Tab_Mebbis3
+            // 
+            this.Tab_Mebbis3.Location = new System.Drawing.Point(4, 22);
+            this.Tab_Mebbis3.Name = "Tab_Mebbis3";
+            this.Tab_Mebbis3.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_Mebbis3.Size = new System.Drawing.Size(1343, 605);
+            this.Tab_Mebbis3.TabIndex = 2;
+            this.Tab_Mebbis3.Text = "Evrak Kontrol";
+            this.Tab_Mebbis3.UseVisualStyleBackColor = true;
             // 
             // Grp_1
             // 
             this.Grp_1.Controls.Add(this.Tnk_RESIM_Kursiyer);
-            this.Grp_1.Location = new System.Drawing.Point(12, 130);
+            this.Grp_1.Location = new System.Drawing.Point(12, 12);
             this.Grp_1.Name = "Grp_1";
             this.Grp_1.Size = new System.Drawing.Size(104, 143);
             this.Grp_1.TabIndex = 10;
@@ -303,7 +300,7 @@
             this.Grp_2.Controls.Add(this.Lbl_3);
             this.Grp_2.Controls.Add(this.label15);
             this.Grp_2.Controls.Add(this.Tnk_GSM_1);
-            this.Grp_2.Location = new System.Drawing.Point(122, 130);
+            this.Grp_2.Location = new System.Drawing.Point(122, 12);
             this.Grp_2.Name = "Grp_2";
             this.Grp_2.Size = new System.Drawing.Size(260, 143);
             this.Grp_2.TabIndex = 10;
@@ -416,7 +413,7 @@
             this.Grp_3.Controls.Add(this.Cmb_SINIFI);
             this.Grp_3.Controls.Add(this.Lbl_2);
             this.Grp_3.Controls.Add(this.label13);
-            this.Grp_3.Location = new System.Drawing.Point(388, 130);
+            this.Grp_3.Location = new System.Drawing.Point(388, 12);
             this.Grp_3.Name = "Grp_3";
             this.Grp_3.Size = new System.Drawing.Size(224, 143);
             this.Grp_3.TabIndex = 10;
@@ -467,22 +464,23 @@
             // 
             // Grp_4
             // 
-            this.Grp_4.Controls.Add(this.Text_Donem);
+            this.Grp_4.Controls.Add(this.TxtSifre);
+            this.Grp_4.Controls.Add(this.TxtKullaniciAd);
             this.Grp_4.Controls.Add(this.Lbl_Grp);
-            this.Grp_4.Location = new System.Drawing.Point(631, 130);
+            this.Grp_4.Location = new System.Drawing.Point(631, 12);
             this.Grp_4.Name = "Grp_4";
             this.Grp_4.Size = new System.Drawing.Size(248, 143);
             this.Grp_4.TabIndex = 10;
             this.Grp_4.TabStop = false;
             this.Grp_4.Text = "Grup / Dönem  Bilgileri";
             // 
-            // Text_Donem
+            // TxtKullaniciAd
             // 
-            this.Text_Donem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Text_Donem.Location = new System.Drawing.Point(17, 72);
-            this.Text_Donem.Name = "Text_Donem";
-            this.Text_Donem.Size = new System.Drawing.Size(211, 20);
-            this.Text_Donem.TabIndex = 50;
+            this.TxtKullaniciAd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TxtKullaniciAd.Location = new System.Drawing.Point(17, 72);
+            this.TxtKullaniciAd.Name = "TxtKullaniciAd";
+            this.TxtKullaniciAd.Size = new System.Drawing.Size(211, 20);
+            this.TxtKullaniciAd.TabIndex = 50;
             // 
             // Lbl_Grp
             // 
@@ -494,85 +492,32 @@
             this.Lbl_Grp.TabIndex = 58;
             this.Lbl_Grp.Text = "Grup Dönem Bilgisi";
             // 
-            // PictureBox4
+            // TxtSifre
             // 
-            this.PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox4.Image")));
-            this.PictureBox4.Location = new System.Drawing.Point(1079, 20);
-            this.PictureBox4.Name = "PictureBox4";
-            this.PictureBox4.Size = new System.Drawing.Size(72, 75);
-            this.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PictureBox4.TabIndex = 47;
-            this.PictureBox4.TabStop = false;
-            // 
-            // Btn_Sil
-            // 
-            this.Btn_Sil.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Sil.Image")));
-            this.Btn_Sil.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Sil.Location = new System.Drawing.Point(983, 20);
-            this.Btn_Sil.Name = "Btn_Sil";
-            this.Btn_Sil.Size = new System.Drawing.Size(71, 75);
-            this.Btn_Sil.TabIndex = 43;
-            this.Btn_Sil.Text = "SİL";
-            this.Btn_Sil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Sil.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Evrak
-            // 
-            this.Btn_Evrak.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Evrak.Image")));
-            this.Btn_Evrak.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Evrak.Location = new System.Drawing.Point(800, 20);
-            this.Btn_Evrak.Name = "Btn_Evrak";
-            this.Btn_Evrak.Size = new System.Drawing.Size(76, 75);
-            this.Btn_Evrak.TabIndex = 44;
-            this.Btn_Evrak.Text = "EVRAK ";
-            this.Btn_Evrak.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Evrak.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Kaydet
-            // 
-            this.Btn_Kaydet.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Kaydet.Image")));
-            this.Btn_Kaydet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Kaydet.Location = new System.Drawing.Point(894, 20);
-            this.Btn_Kaydet.Name = "Btn_Kaydet";
-            this.Btn_Kaydet.Size = new System.Drawing.Size(76, 75);
-            this.Btn_Kaydet.TabIndex = 45;
-            this.Btn_Kaydet.Text = "KAYDET";
-            this.Btn_Kaydet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Kaydet.UseVisualStyleBackColor = true;
-            // 
-            // PictureBox1
-            // 
-            this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(2, -2);
-            this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(1160, 110);
-            this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PictureBox1.TabIndex = 46;
-            this.PictureBox1.TabStop = false;
+            this.TxtSifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TxtSifre.Location = new System.Drawing.Point(17, 98);
+            this.TxtSifre.Name = "TxtSifre";
+            this.TxtSifre.Size = new System.Drawing.Size(211, 20);
+            this.TxtSifre.TabIndex = 50;
             // 
             // Form_Mebbis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 748);
-            this.Controls.Add(this.PictureBox4);
-            this.Controls.Add(this.Btn_Sil);
-            this.Controls.Add(this.Btn_Evrak);
-            this.Controls.Add(this.Btn_Kaydet);
-            this.Controls.Add(this.PictureBox1);
+            this.ClientSize = new System.Drawing.Size(1375, 848);
             this.Controls.Add(this.Grp_4);
-            this.Controls.Add(this.Grup_Menu);
             this.Controls.Add(this.Grp_3);
             this.Controls.Add(this.Grp_2);
             this.Controls.Add(this.Grp_1);
             this.Controls.Add(this.Tab_Mebbis);
-            this.Controls.Add(this.Labelmebbis);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Mebbis";
             this.Text = "Form_Mebbis";
             this.Load += new System.EventHandler(this.Form_Mebbis_Load);
             this.Tab_Mebbis.ResumeLayout(false);
             this.Tab_Mebbis1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dtg_Donemlerlistele)).EndInit();
+            this.Tab_Mebbis2.ResumeLayout(false);
             this.Grup_Menu.ResumeLayout(false);
             this.Panel_Ana.ResumeLayout(false);
             this.Alt_donem.ResumeLayout(false);
@@ -585,16 +530,11 @@
             this.Grp_3.PerformLayout();
             this.Grp_4.ResumeLayout(false);
             this.Grp_4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label Labelmebbis;
         private System.Windows.Forms.TabControl Tab_Mebbis;
         private System.Windows.Forms.TabPage Tab_Mebbis1;
         private System.Windows.Forms.TabPage Tab_Mebbis2;
@@ -621,22 +561,19 @@
         private System.Windows.Forms.ComboBox Cmb_SINIFI;
         private System.Windows.Forms.Label Lbl_2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox Text_Donem;
+        private System.Windows.Forms.TextBox TxtKullaniciAd;
         private System.Windows.Forms.Label Lbl_Grp;
         private System.Windows.Forms.GroupBox Grup_Menu;
         private System.Windows.Forms.Panel Panel_Ana;
-        private System.Windows.Forms.Button Btn_Resim_Kayit;
-        private System.Windows.Forms.Button Btn_Donem;
-        private System.Windows.Forms.Panel Panel_Alt;
-        private System.Windows.Forms.Button Alt_Resim_Kayit;
-        private System.Windows.Forms.Button Alt_Resim_Kayit2;
+        private System.Windows.Forms.Button Btn_ogrn;
         private System.Windows.Forms.Panel Alt_donem;
         private System.Windows.Forms.Button Btn_Kursiyer_Kayit;
-        private System.Windows.Forms.Button Btn_ogrn;
-        private System.Windows.Forms.PictureBox PictureBox4;
-        private System.Windows.Forms.Button Btn_Sil;
-        private System.Windows.Forms.Button Btn_Evrak;
-        private System.Windows.Forms.Button Btn_Kaydet;
-        private System.Windows.Forms.PictureBox PictureBox1;
+        private System.Windows.Forms.Button Btn_Donem;
+        private System.Windows.Forms.Panel Panel_Alt;
+        private System.Windows.Forms.Button Alt_Resim_Kayit2;
+        private System.Windows.Forms.Button Alt_Resim_Kayit;
+        private System.Windows.Forms.Button Btn_Resim_Kayit;
+        private System.Windows.Forms.WebBrowser Web_Mebbis;
+        private System.Windows.Forms.TextBox TxtSifre;
     }
 }

@@ -107,6 +107,7 @@
             this.Controls.Add(this.Btn_Donem_Ekle);
             this.Controls.Add(this.Btn_Guncelle);
             this.Controls.Add(this.PictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Donemler";
             this.Text = "Form_Donemler";
             this.Load += new System.EventHandler(this.Form_Donemler_Load);

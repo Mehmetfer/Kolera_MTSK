@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Donem_Ekle));
             this.Grup_Donemler = new System.Windows.Forms.GroupBox();
             this.PictureBox4 = new System.Windows.Forms.PictureBox();
-            this.Button_Sil = new System.Windows.Forms.Button();
-            this.Btn_Ara = new System.Windows.Forms.Button();
             this.Btn_Kaydet = new System.Windows.Forms.Button();
             this.Btn_Yeni_Grup = new System.Windows.Forms.Button();
             this.Lbl_Donem = new System.Windows.Forms.Label();
@@ -56,8 +54,6 @@
             // Grup_Donemler
             // 
             this.Grup_Donemler.Controls.Add(this.PictureBox4);
-            this.Grup_Donemler.Controls.Add(this.Button_Sil);
-            this.Grup_Donemler.Controls.Add(this.Btn_Ara);
             this.Grup_Donemler.Controls.Add(this.Btn_Kaydet);
             this.Grup_Donemler.Controls.Add(this.Btn_Yeni_Grup);
             this.Grup_Donemler.Location = new System.Drawing.Point(12, 12);
@@ -76,31 +72,6 @@
             this.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox4.TabIndex = 49;
             this.PictureBox4.TabStop = false;
-            // 
-            // Button_Sil
-            // 
-            this.Button_Sil.Image = ((System.Drawing.Image)(resources.GetObject("Button_Sil.Image")));
-            this.Button_Sil.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Button_Sil.Location = new System.Drawing.Point(289, 19);
-            this.Button_Sil.Name = "Button_Sil";
-            this.Button_Sil.Size = new System.Drawing.Size(71, 75);
-            this.Button_Sil.TabIndex = 46;
-            this.Button_Sil.Text = "SİL";
-            this.Button_Sil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Button_Sil.UseVisualStyleBackColor = true;
-            
-            // 
-            // Btn_Ara
-            // 
-            this.Btn_Ara.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ara.Image")));
-            this.Btn_Ara.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Ara.Location = new System.Drawing.Point(212, 19);
-            this.Btn_Ara.Name = "Btn_Ara";
-            this.Btn_Ara.Size = new System.Drawing.Size(71, 75);
-            this.Btn_Ara.TabIndex = 46;
-            this.Btn_Ara.Text = "ARAMA";
-            this.Btn_Ara.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Ara.UseVisualStyleBackColor = true;
             // 
             // Btn_Kaydet
             // 
@@ -293,12 +264,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Btn_Ara;
         private System.Windows.Forms.Button Btn_Yeni_Grup;
         private System.Windows.Forms.Button Btn_Kaydet;
         private System.Windows.Forms.GroupBox Grup_Donemler;
-        private System.Windows.Forms.Button Button_Sil;
         private System.Windows.Forms.PictureBox PictureBox4;
         private System.Windows.Forms.Label Lbl_Donem;
         private System.Windows.Forms.Label Lbl_2;

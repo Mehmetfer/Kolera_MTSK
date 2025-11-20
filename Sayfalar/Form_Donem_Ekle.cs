@@ -22,7 +22,7 @@ namespace Tarantula_MTSK.Sayfalar
         {
             // Yıl ComboBox
             for (int yil = DateTime.Now.Year - 5; yil <= DateTime.Now.Year + 1; yil++)
-                Cmb_Donemyili.Items.Add(yil);
+                Cmb_Donemyili.Items.Add(yil.ToString());
 
             // Ay ComboBox (isim olarak)
             for (int ay = 1; ay <= 12; ay++)
@@ -69,8 +69,9 @@ namespace Tarantula_MTSK.Sayfalar
         public void LoadForUpdate(int id, string yil, string ay, string sube, string donemAdi, string grup, DateTime baslangic, DateTime bitis)
         {
             _id = id;
+
             SetComboBoxValue(Cmb_Donemyili, yil);
-            SetComboBoxValue(Cmb_Donemay, AyToString(int.Parse(ay)));
+            SetComboBoxValue(Cmb_Donemay, ay);
             SetComboBoxValue(Cmb_Subesi, sube);
             SetComboBoxValue(Cmb_Grubu, grup);
 
@@ -96,7 +97,7 @@ namespace Tarantula_MTSK.Sayfalar
                 }
 
                 int yil = int.Parse(Cmb_Donemyili.Text);
-                int ay = AyToNumber(Cmb_Donemay.Text); // ComboBox’tan rakam al
+                string ay = Cmb_Donemay.Text; // Artık string olarak ay
                 string sube = Cmb_Subesi.Text;
                 string grup = Cmb_Grubu.Text;
                 string donemAdi = Text_DonemAdi.Text;
@@ -104,7 +105,7 @@ namespace Tarantula_MTSK.Sayfalar
                 DateTime bitis = Date_Bitis.Value;
 
                 if (string.IsNullOrWhiteSpace(donemAdi))
-                    donemAdi = $"{yil}-{AyToString(ay)}-{grup}-{sube}";
+                    donemAdi = $"{yil}-{ay}-{grup}-{sube}";
 
                 if (_id == 0)
                 {
@@ -127,7 +128,7 @@ namespace Tarantula_MTSK.Sayfalar
             }
         }
 
-        // Ay numarasını string’e çevir
+        // Ay numarasını isim olarak çevir
         private string AyToString(int ay)
         {
             switch (ay)
@@ -145,27 +146,6 @@ namespace Tarantula_MTSK.Sayfalar
                 case 11: return "KASIM";
                 case 12: return "ARALIK";
                 default: return ay.ToString();
-            }
-        }
-
-        // Ay ismini rakama çevir
-        private int AyToNumber(string ay)
-        {
-            switch (ay.ToUpper())
-            {
-                case "OCAK": return 1;
-                case "ŞUBAT": return 2;
-                case "MART": return 3;
-                case "NİSAN": return 4;
-                case "MAYIS": return 5;
-                case "HAZİRAN": return 6;
-                case "TEMMUZ": return 7;
-                case "AĞUSTOS": return 8;
-                case "EYLÜL": return 9;
-                case "EKİM": return 10;
-                case "KASIM": return 11;
-                case "ARALIK": return 12;
-                default: return 0;
             }
         }
     }

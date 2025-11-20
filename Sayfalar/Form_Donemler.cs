@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarantula_MTSK.Services;
 
@@ -21,24 +23,30 @@ namespace Tarantula_MTSK.Sayfalar
         {
             Btn_Guncelle.Enabled = false;
             Btn_Sil.Enabled = false;
+
             await DonemleriListeleAsync();
         }
 
-        private async System.Threading.Tasks.Task DonemleriListeleAsync()
+        private async Task DonemleriListeleAsync()
         {
             DataTable dt = await _donemService.GetGrupKartlariAsync();
 
-            // Yeniden eskiye sıralama: önce BAS_TAR DESC, sonra BIT_TAR DESC
-            if (dt.Columns.Contains("BAS_TAR") && dt.Columns.Contains("BIT_TAR"))
+            // Tarihe göre sıralama: önce BAS_TAR, sonra BIT_TAR
+            if (dt.Rows.Count > 0)
+            {
                 dt.DefaultView.Sort = "BAS_TAR DESC, BIT_TAR DESC";
+                dt = dt.DefaultView.ToTable();
+            }
 
             Dtg_goster.DataSource = dt;
 
             // Sütun başlıkları
             if (Dtg_goster.Columns.Contains("ID")) Dtg_goster.Columns["ID"].HeaderText = "ID";
             if (Dtg_goster.Columns.Contains("DONEM_ADI")) Dtg_goster.Columns["DONEM_ADI"].HeaderText = "Dönem Adı";
-            if (Dtg_goster.Columns.Contains("DONEM_GRUBU")) Dtg_goster.Columns["DONEM_GRUBU"].HeaderText = "Grup";
+            if (Dtg_goster.Columns.Contains("DONEM_YILI")) Dtg_goster.Columns["DONEM_YILI"].HeaderText = "Yıl";
+            if (Dtg_goster.Columns.Contains("DONEM_AYI")) Dtg_goster.Columns["DONEM_AYI"].HeaderText = "Ay";
             if (Dtg_goster.Columns.Contains("DONEM_SUBESI")) Dtg_goster.Columns["DONEM_SUBESI"].HeaderText = "Şube";
+            if (Dtg_goster.Columns.Contains("DONEM_GRUBU")) Dtg_goster.Columns["DONEM_GRUBU"].HeaderText = "Grup";
             if (Dtg_goster.Columns.Contains("BAS_TAR")) Dtg_goster.Columns["BAS_TAR"].HeaderText = "Başlangıç";
             if (Dtg_goster.Columns.Contains("BIT_TAR")) Dtg_goster.Columns["BIT_TAR"].HeaderText = "Bitiş";
 
@@ -48,7 +56,9 @@ namespace Tarantula_MTSK.Sayfalar
 
         private void Dtg_goster_SelectionChanged(object sender, EventArgs e)
         {
-           
+            bool secili = Dtg_goster.SelectedRows.Count > 0;
+            Btn_Guncelle.Enabled = secili;
+            Btn_Sil.Enabled = secili;
         }
 
         private void Btn_Donem_Ekle_Click(object sender, EventArgs e)
@@ -58,12 +68,12 @@ namespace Tarantula_MTSK.Sayfalar
             formEkle.Show();
         }
 
-        private void Dtg_goster_DoubleClick(object sender, EventArgs e)
+        private void Btn_Guncelle_Click_1(object sender, EventArgs e)
         {
             AcFormuGuncelle();
         }
 
-        private void Btn_Guncelle_Click_1(object sender, EventArgs e)
+        private void Dtg_goster_DoubleClick(object sender, EventArgs e)
         {
             AcFormuGuncelle();
         }
@@ -77,11 +87,13 @@ namespace Tarantula_MTSK.Sayfalar
 
             Form_Donem_Ekle formGuncelle = new Form_Donem_Ekle(_connectionString);
 
-            // Form_Donem_Ekle'de LoadForUpdate metodu olmalı
+            // Ayı string olarak alıyoruz
+            string ay = row.Cells["DONEM_AYI"].Value.ToString();
+
             formGuncelle.LoadForUpdate(
                 id,
                 row.Cells["DONEM_YILI"].Value.ToString(),
-                row.Cells["DONEM_AYI"].Value.ToString(),
+                ay,
                 row.Cells["DONEM_SUBESI"].Value.ToString(),
                 row.Cells["DONEM_ADI"].Value.ToString(),
                 row.Cells["DONEM_GRUBU"].Value.ToString(),
@@ -113,5 +125,7 @@ namespace Tarantula_MTSK.Sayfalar
             Btn_Guncelle.Enabled = secili;
             Btn_Sil.Enabled = secili;
         }
+
+       
     }
 }

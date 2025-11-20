@@ -104,13 +104,13 @@ namespace Tarantula_MTSK.Sayfalar
 
         private void Araclar_Button_Click(object sender, EventArgs e)
         {
-            var frmAraclar = new Form_Araclar(_serverAyar.ConnectionString);
+            var frmAraclar = new Form_Araclar(_serverAyar); // ← ServerAyar nesnesi gönderiyoruz
             OpenChildForm(frmAraclar, "Form_Araclar");
         }
 
         private void Peronsel_Button_Click(object sender, EventArgs e)
         {
-            var frmpersonel = new Form_Personel(_serverAyar.ConnectionString);
+            var frmpersonel = new Form_Personel(_serverAyar);
             OpenChildForm(frmpersonel, "Form_Personel");
         }
 

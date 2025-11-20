@@ -15,13 +15,14 @@ namespace Tarantula_MTSK.Sayfalar
         public Form_Giris(ServerAyar serverAyar)
         {
             InitializeComponent();
-            _serverAyar = serverAyar;  // ServerAyar nesnesini alıyoruz
-            _kullaniciService = new KullaniciService($"Server={serverAyar.Sunucu};Database={serverAyar.VeritabaniAdi};User Id={serverAyar.KullaniciAdi};Password={serverAyar.Parola};");
+            _serverAyar = serverAyar ?? throw new ArgumentNullException(nameof(serverAyar));
+
+            // Artık Program.cs'de oluşturulan ConnectionString'i kullanıyoruz
+            _kullaniciService = new KullaniciService(_serverAyar.ConnectionString);
         }
 
         private async void Form_Giris_Load(object sender, EventArgs e)
         {
-            // Kullanıcı adlarını ComboBox'a yükle
             await LoadKullaniciAdlari();
         }
 
@@ -30,6 +31,7 @@ namespace Tarantula_MTSK.Sayfalar
             try
             {
                 var kullaniciAdlari = await _kullaniciService.GetKullaniciAdlariAsync();
+                ComboBox_KullaniciAdi.Items.Clear();
                 foreach (var kullaniciAdi in kullaniciAdlari)
                 {
                     ComboBox_KullaniciAdi.Items.Add(kullaniciAdi);
@@ -41,27 +43,7 @@ namespace Tarantula_MTSK.Sayfalar
             }
         }
 
-        // PictureBox5 tıklama işlemi
-        private void PictureBox5_Click_1(object sender, EventArgs e)
-        {
-            // Server formunu açıyoruz
-            Server server = new Server();
-            server.Show();
-            this.Hide();
-
-            // Bu metod PictureBox5 tıklandığında çağrılacak
-            MessageBox.Show("Server ayarlarına yönlendiriliyorsunuz!");
-        }
-
-        // PictureBox5 tıklama işlemi - Server formuna yönlendirme
-        private void PictureBox5_Click(object sender, EventArgs e)
-        {
-            Server Formserver = new Server();
-            Formserver.Show();
-            this.Hide();
-        }
-
-        // Giriş işlemi
+        // Giriş butonu
         private async void Btngiris_Click_1(object sender, EventArgs e)
         {
             string kullaniciAdi = ComboBox_KullaniciAdi.SelectedItem?.ToString();
@@ -80,16 +62,13 @@ namespace Tarantula_MTSK.Sayfalar
 
                 if (isValid)
                 {
-                    
-                  
-                    // Kullanıcı başarılı giriş yaptıysa Ana Menü sayfasına yönlendir
+                    // Ana Menü sayfasına yönlendir
                     Ana_Menu anaMenu = new Ana_Menu(_serverAyar);
                     anaMenu.Show();
                     this.Hide();
                 }
                 else
                 {
-                    // Kullanıcı adı veya şifre hatalıysa uyarı mesajı göster
                     Lbl_kaz.Text = "Kullanıcı adı veya şifre hatalı!";
                     Lbl_kaz.Visible = true;
                 }
@@ -100,26 +79,37 @@ namespace Tarantula_MTSK.Sayfalar
             }
         }
 
+        // Server ayarına yönlendirme
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            Server form2 = new Server();
+            form2.Show();
+            this.Hide();
+        }
+
+        private void PictureBox5_Click(object sender, EventArgs e)
+        {
+            Server formServer = new Server();
+            formServer.Show();
+            this.Hide();
+            MessageBox.Show("Server ayarlarına yönlendiriliyorsunuz!");
+        }
+
+        private void Kapat_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void PictureBox4_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void ComboBox_KullaniciAdi_SelectedIndexChanged(object sender, EventArgs e)
+        private void PictureBox3_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void PictureBox1_Click(object sender, EventArgs e)
-        {
-            Server form2 = new Server(); // Form2'yi oluştur
-            form2.Show();              // Form2'yi göster
-            this.Hide();               // İstersen Form1'i gizle
-        }
-
-        private void Kapat_Click(object sender, EventArgs e)
-        {
-            Close();    
+            Server form2 = new Server();
+            form2.Show();
+            this.Hide();
         }
 
         private void PictureBox4_Click_1(object sender, EventArgs e)

@@ -104,6 +104,7 @@
             this.Controls.Add(this.Btn_Evrak);
             this.Controls.Add(this.Btn_Kaydet);
             this.Controls.Add(this.PictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Yardim";
             this.Text = "Form_Yardim";
             this.Load += new System.EventHandler(this.Form_Yardim_Load);

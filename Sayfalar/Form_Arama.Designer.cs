@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Arama));
             this.Tnk_Adim = new System.Windows.Forms.Label();
             this.Grparama = new System.Windows.Forms.GroupBox();
+            this.Piclogo = new System.Windows.Forms.PictureBox();
+            this.Tnk_RESIM = new System.Windows.Forms.PictureBox();
             this.PrgBar = new System.Windows.Forms.ProgressBar();
             this.Txt_Ara = new System.Windows.Forms.TextBox();
             this.Dvg_Kursiyerler = new System.Windows.Forms.DataGridView();
-            this.Piclogo = new System.Windows.Forms.PictureBox();
-            this.Tnk_RESIM = new System.Windows.Forms.PictureBox();
             this.Pickusak = new System.Windows.Forms.PictureBox();
             this.PictureBox4 = new System.Windows.Forms.PictureBox();
             this.Grparama.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dvg_Kursiyerler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Piclogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tnk_RESIM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dvg_Kursiyerler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pickusak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +74,30 @@
             this.Grparama.Text = "Grpara";
             this.Grparama.Enter += new System.EventHandler(this.Grparama_Enter);
             // 
+            // Piclogo
+            // 
+            this.Piclogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Piclogo.Image = ((System.Drawing.Image)(resources.GetObject("Piclogo.Image")));
+            this.Piclogo.Location = new System.Drawing.Point(17, 244);
+            this.Piclogo.Margin = new System.Windows.Forms.Padding(2);
+            this.Piclogo.Name = "Piclogo";
+            this.Piclogo.Size = new System.Drawing.Size(77, 254);
+            this.Piclogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Piclogo.TabIndex = 8;
+            this.Piclogo.TabStop = false;
+            // 
+            // Tnk_RESIM
+            // 
+            this.Tnk_RESIM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tnk_RESIM.Image = ((System.Drawing.Image)(resources.GetObject("Tnk_RESIM.Image")));
+            this.Tnk_RESIM.Location = new System.Drawing.Point(17, 47);
+            this.Tnk_RESIM.Margin = new System.Windows.Forms.Padding(2);
+            this.Tnk_RESIM.Name = "Tnk_RESIM";
+            this.Tnk_RESIM.Size = new System.Drawing.Size(87, 122);
+            this.Tnk_RESIM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Tnk_RESIM.TabIndex = 9;
+            this.Tnk_RESIM.TabStop = false;
+            // 
             // PrgBar
             // 
             this.PrgBar.Location = new System.Drawing.Point(6, 24);
@@ -101,30 +125,6 @@
             this.Dvg_Kursiyerler.Name = "Dvg_Kursiyerler";
             this.Dvg_Kursiyerler.Size = new System.Drawing.Size(1112, 603);
             this.Dvg_Kursiyerler.TabIndex = 5;
-            // 
-            // Piclogo
-            // 
-            this.Piclogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Piclogo.Image = ((System.Drawing.Image)(resources.GetObject("Piclogo.Image")));
-            this.Piclogo.Location = new System.Drawing.Point(17, 244);
-            this.Piclogo.Margin = new System.Windows.Forms.Padding(2);
-            this.Piclogo.Name = "Piclogo";
-            this.Piclogo.Size = new System.Drawing.Size(77, 254);
-            this.Piclogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Piclogo.TabIndex = 8;
-            this.Piclogo.TabStop = false;
-            // 
-            // Tnk_RESIM
-            // 
-            this.Tnk_RESIM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tnk_RESIM.Image = ((System.Drawing.Image)(resources.GetObject("Tnk_RESIM.Image")));
-            this.Tnk_RESIM.Location = new System.Drawing.Point(17, 47);
-            this.Tnk_RESIM.Margin = new System.Windows.Forms.Padding(2);
-            this.Tnk_RESIM.Name = "Tnk_RESIM";
-            this.Tnk_RESIM.Size = new System.Drawing.Size(87, 122);
-            this.Tnk_RESIM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Tnk_RESIM.TabIndex = 9;
-            this.Tnk_RESIM.TabStop = false;
             // 
             // Pickusak
             // 
@@ -154,13 +154,14 @@
             this.Controls.Add(this.PictureBox4);
             this.Controls.Add(this.Grparama);
             this.Controls.Add(this.Pickusak);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Arama";
             this.Text = "Form_Arama";
             this.Grparama.ResumeLayout(false);
             this.Grparama.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dvg_Kursiyerler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Piclogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tnk_RESIM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dvg_Kursiyerler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pickusak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).EndInit();
             this.ResumeLayout(false);
