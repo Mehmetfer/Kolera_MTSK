@@ -45,7 +45,6 @@ namespace Tarantula_MTSK
             Application.SetCompatibleTextRenderingDefault(false);
 
             string xmlPath = Path.Combine(Application.StartupPath, "Baglanti.xml");
-
             var serverAyar = DeserializeServerAyar(xmlPath);
 
             if (serverAyar == null)
@@ -54,12 +53,27 @@ namespace Tarantula_MTSK
                 return;
             }
 
-            serverAyar.ConnectionString =
-                $"Server={serverAyar.Sunucu};Database={serverAyar.VeritabaniAdi};User Id={serverAyar.KullaniciAdi};Password={serverAyar.Parola};TrustServerCertificate=True;";
+            // -----------------------------
+            // ConnectionString Oluşturma
+            // -----------------------------
+            if (serverAyar.BaglantiTuru == "Windows")
+            {
+                // Windows Authentication
+                serverAyar.ConnectionString =
+                    $"Server={serverAyar.Sunucu};Database={serverAyar.VeritabaniAdi};Trusted_Connection=True;TrustServerCertificate=True;";
+            }
+            else
+            {
+                // SQL Authentication
+                serverAyar.ConnectionString =
+                    $"Server={serverAyar.Sunucu};Database={serverAyar.VeritabaniAdi};User Id={serverAyar.KullaniciAdi};Password={serverAyar.Parola};TrustServerCertificate=True;";
+            }
 
+            // Programı çalıştır
             Application.Run(new Form_Giris(serverAyar));
         }
 
+        // XML’den ServerAyar okuma
         static ServerAyar DeserializeServerAyar(string xmlFilePath)
         {
             if (!File.Exists(xmlFilePath))

@@ -250,6 +250,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AracService.cs" />
+    <Compile Include="Models\Arac_Model.cs" />
     <Compile Include="Models\AramaService.cs" />
     <Compile Include="Models\DonemService.cs" />
     <Compile Include="Models\IDonemService.cs" />
@@ -262,6 +264,9 @@
     <Compile Include="Models\KursiyerEvrak_Model.cs" />
     <Compile Include="Models\Kursiyer_Model.cs" />
     <Compile Include="Models\MebbisService.cs" />
+    <Compile Include="Models\Mebbis_Model.cs" />
+    <Compile Include="Models\PersonelService.cs" />
+    <Compile Include="Models\Personel_Model.cs" />
     <Compile Include="Models\Scanner.cs" />
     <Compile Include="Models\ServerAyar.cs" />
     <Compile Include="Program.cs" />
@@ -330,6 +335,12 @@
     </Compile>
     <Compile Include="Sayfalar\Form_Mebbis.Designer.cs">
       <DependentUpon>Form_Mebbis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sayfalar\Form_Mebbis_Aktarim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sayfalar\Form_Mebbis_Aktarim.Designer.cs">
+      <DependentUpon>Form_Mebbis_Aktarim.cs</DependentUpon>
     </Compile>
     <Compile Include="Sayfalar\Form_Personel.cs">
       <SubType>Form</SubType>
@@ -402,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sayfalar\Form_Mebbis.resx">
       <DependentUpon>Form_Mebbis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sayfalar\Form_Mebbis_Aktarim.resx">
+      <DependentUpon>Form_Mebbis_Aktarim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sayfalar\Form_Personel.resx">
       <DependentUpon>Form_Personel.cs</DependentUpon>
