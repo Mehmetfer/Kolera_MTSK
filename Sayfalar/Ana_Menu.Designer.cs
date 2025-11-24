@@ -24,17 +24,14 @@ namespace Tarantula_MTSK.Sayfalar
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ana_Menu));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Menumain = new System.Windows.Forms.MenuStrip();
-            this.Mebbis = new System.Windows.Forms.ToolStripMenuItem();
-            this.Mebbisaktar = new System.Windows.Forms.ToolStripMenuItem();
-            this.Mebgir = new System.Windows.Forms.ToolStripMenuItem();
-            this.Lbl_Lisans = new System.Windows.Forms.Label();
-            this.Pickusak = new System.Windows.Forms.PictureBox();
-            this.Picture_Ozel = new System.Windows.Forms.PictureBox();
             this.Anasayfa = new System.Windows.Forms.ToolStripMenuItem();
             this.Kursiyer = new System.Windows.Forms.ToolStripMenuItem();
             this.Kursiyer_Ekle = new System.Windows.Forms.ToolStripMenuItem();
             this.Arama = new System.Windows.Forms.ToolStripMenuItem();
             this.Kursiyersil = new System.Windows.Forms.ToolStripMenuItem();
+            this.Mebbis = new System.Windows.Forms.ToolStripMenuItem();
+            this.Mebbisaktar = new System.Windows.Forms.ToolStripMenuItem();
+            this.Mebgir = new System.Windows.Forms.ToolStripMenuItem();
             this.Mebbis_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.Arama_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.Araclar_Button = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,11 +41,16 @@ namespace Tarantula_MTSK.Sayfalar
             this.Raporlar_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.Yedek_Button = new System.Windows.Forms.ToolStripMenuItem();
             this.Yardim_Button = new System.Windows.Forms.ToolStripMenuItem();
+            this.Lbl_Lisans = new System.Windows.Forms.Label();
+            this.Pickusak = new System.Windows.Forms.PictureBox();
+            this.Picture_Ozel = new System.Windows.Forms.PictureBox();
             this.Anamenu_Resim = new System.Windows.Forms.PictureBox();
+            this.Pic_exit_1 = new System.Windows.Forms.PictureBox();
             this.Menumain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pickusak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture_Ozel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anamenu_Resim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_exit_1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -80,62 +82,6 @@ namespace Tarantula_MTSK.Sayfalar
             this.Menumain.TabIndex = 18;
             this.Menumain.Text = "Menu";
             this.Menumain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Menumain_ItemClicked);
-            // 
-            // Mebbis
-            // 
-            this.Mebbis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Mebbisaktar,
-            this.Mebgir});
-            this.Mebbis.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Mebbis.Name = "Mebbis";
-            this.Mebbis.Size = new System.Drawing.Size(12, 90);
-            this.Mebbis.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Mebbis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // Mebbisaktar
-            // 
-            this.Mebbisaktar.Name = "Mebbisaktar";
-            this.Mebbisaktar.Size = new System.Drawing.Size(158, 22);
-            this.Mebbisaktar.Text = "Mebbis Aktarım";
-            // 
-            // Mebgir
-            // 
-            this.Mebgir.Name = "Mebgir";
-            this.Mebgir.Size = new System.Drawing.Size(158, 22);
-            this.Mebgir.Text = "Meb Giriş";
-            // 
-            // Lbl_Lisans
-            // 
-            this.Lbl_Lisans.AutoSize = true;
-            this.Lbl_Lisans.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Lbl_Lisans.ForeColor = System.Drawing.Color.Transparent;
-            this.Lbl_Lisans.Location = new System.Drawing.Point(1256, 794);
-            this.Lbl_Lisans.Name = "Lbl_Lisans";
-            this.Lbl_Lisans.Size = new System.Drawing.Size(145, 13);
-            this.Lbl_Lisans.TabIndex = 27;
-            this.Lbl_Lisans.Text = "Tarantula @2025 Ver.1.9.8.0";
-            // 
-            // Pickusak
-            // 
-            this.Pickusak.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Pickusak.Image = ((System.Drawing.Image)(resources.GetObject("Pickusak.Image")));
-            this.Pickusak.Location = new System.Drawing.Point(0, 97);
-            this.Pickusak.Name = "Pickusak";
-            this.Pickusak.Size = new System.Drawing.Size(1439, 110);
-            this.Pickusak.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pickusak.TabIndex = 25;
-            this.Pickusak.TabStop = false;
-            // 
-            // Picture_Ozel
-            // 
-            this.Picture_Ozel.Image = ((System.Drawing.Image)(resources.GetObject("Picture_Ozel.Image")));
-            this.Picture_Ozel.Location = new System.Drawing.Point(1308, 0);
-            this.Picture_Ozel.Margin = new System.Windows.Forms.Padding(2);
-            this.Picture_Ozel.Name = "Picture_Ozel";
-            this.Picture_Ozel.Size = new System.Drawing.Size(94, 92);
-            this.Picture_Ozel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Picture_Ozel.TabIndex = 20;
-            this.Picture_Ozel.TabStop = false;
             // 
             // Anasayfa
             // 
@@ -187,6 +133,29 @@ namespace Tarantula_MTSK.Sayfalar
             this.Kursiyersil.Size = new System.Drawing.Size(141, 22);
             this.Kursiyersil.Text = "Kursiyer Sil";
             this.Kursiyersil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Mebbis
+            // 
+            this.Mebbis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Mebbisaktar,
+            this.Mebgir});
+            this.Mebbis.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Mebbis.Name = "Mebbis";
+            this.Mebbis.Size = new System.Drawing.Size(12, 90);
+            this.Mebbis.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Mebbis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // Mebbisaktar
+            // 
+            this.Mebbisaktar.Name = "Mebbisaktar";
+            this.Mebbisaktar.Size = new System.Drawing.Size(158, 22);
+            this.Mebbisaktar.Text = "Mebbis Aktarım";
+            // 
+            // Mebgir
+            // 
+            this.Mebgir.Name = "Mebgir";
+            this.Mebgir.Size = new System.Drawing.Size(158, 22);
+            this.Mebgir.Text = "Meb Giriş";
             // 
             // Mebbis_Button
             // 
@@ -282,6 +251,39 @@ namespace Tarantula_MTSK.Sayfalar
             this.Yardim_Button.Text = "Yardım";
             this.Yardim_Button.Click += new System.EventHandler(this.Yardim_Button_Click);
             // 
+            // Lbl_Lisans
+            // 
+            this.Lbl_Lisans.AutoSize = true;
+            this.Lbl_Lisans.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Lbl_Lisans.ForeColor = System.Drawing.Color.Transparent;
+            this.Lbl_Lisans.Location = new System.Drawing.Point(1256, 794);
+            this.Lbl_Lisans.Name = "Lbl_Lisans";
+            this.Lbl_Lisans.Size = new System.Drawing.Size(145, 13);
+            this.Lbl_Lisans.TabIndex = 27;
+            this.Lbl_Lisans.Text = "Tarantula @2025 Ver.1.9.8.0";
+            // 
+            // Pickusak
+            // 
+            this.Pickusak.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Pickusak.Image = ((System.Drawing.Image)(resources.GetObject("Pickusak.Image")));
+            this.Pickusak.Location = new System.Drawing.Point(0, 97);
+            this.Pickusak.Name = "Pickusak";
+            this.Pickusak.Size = new System.Drawing.Size(1439, 110);
+            this.Pickusak.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pickusak.TabIndex = 25;
+            this.Pickusak.TabStop = false;
+            // 
+            // Picture_Ozel
+            // 
+            this.Picture_Ozel.Image = ((System.Drawing.Image)(resources.GetObject("Picture_Ozel.Image")));
+            this.Picture_Ozel.Location = new System.Drawing.Point(1237, 0);
+            this.Picture_Ozel.Margin = new System.Windows.Forms.Padding(2);
+            this.Picture_Ozel.Name = "Picture_Ozel";
+            this.Picture_Ozel.Size = new System.Drawing.Size(94, 92);
+            this.Picture_Ozel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Picture_Ozel.TabIndex = 20;
+            this.Picture_Ozel.TabStop = false;
+            // 
             // Anamenu_Resim
             // 
             this.Anamenu_Resim.Image = ((System.Drawing.Image)(resources.GetObject("Anamenu_Resim.Image")));
@@ -292,6 +294,18 @@ namespace Tarantula_MTSK.Sayfalar
             this.Anamenu_Resim.TabIndex = 21;
             this.Anamenu_Resim.TabStop = false;
             // 
+            // Pic_exit_1
+            // 
+            this.Pic_exit_1.Image = ((System.Drawing.Image)(resources.GetObject("Pic_exit_1.Image")));
+            this.Pic_exit_1.Location = new System.Drawing.Point(1335, 0);
+            this.Pic_exit_1.Margin = new System.Windows.Forms.Padding(2);
+            this.Pic_exit_1.Name = "Pic_exit_1";
+            this.Pic_exit_1.Size = new System.Drawing.Size(94, 92);
+            this.Pic_exit_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pic_exit_1.TabIndex = 20;
+            this.Pic_exit_1.TabStop = false;
+            this.Pic_exit_1.Click += new System.EventHandler(this.Pic_exit_1_Click);
+            // 
             // Ana_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,6 +313,7 @@ namespace Tarantula_MTSK.Sayfalar
             this.ClientSize = new System.Drawing.Size(1439, 816);
             this.Controls.Add(this.Lbl_Lisans);
             this.Controls.Add(this.Pickusak);
+            this.Controls.Add(this.Pic_exit_1);
             this.Controls.Add(this.Picture_Ozel);
             this.Controls.Add(this.Menumain);
             this.Controls.Add(this.Anamenu_Resim);
@@ -312,6 +327,7 @@ namespace Tarantula_MTSK.Sayfalar
             ((System.ComponentModel.ISupportInitialize)(this.Pickusak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture_Ozel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anamenu_Resim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_exit_1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,5 +357,6 @@ namespace Tarantula_MTSK.Sayfalar
         private ToolStripMenuItem Mebbis_Button;
         private ToolStripMenuItem Yardim_Button;
         private ToolStripMenuItem Donem_Grup;
+        private PictureBox Pic_exit_1;
     }
 }

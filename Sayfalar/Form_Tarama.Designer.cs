@@ -30,6 +30,7 @@
         {
             this.Button1 = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.Btn_Tarama = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.ComboBox1 = new System.Windows.Forms.ComboBox();
@@ -42,7 +43,6 @@
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.Btn_Tarama = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.TableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
@@ -78,6 +78,17 @@
             this.GroupBox1.TabIndex = 1;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Properties";
+            this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter_1);
+            // 
+            // Btn_Tarama
+            // 
+            this.Btn_Tarama.Location = new System.Drawing.Point(227, 87);
+            this.Btn_Tarama.Name = "Btn_Tarama";
+            this.Btn_Tarama.Size = new System.Drawing.Size(101, 23);
+            this.Btn_Tarama.TabIndex = 9;
+            this.Btn_Tarama.Text = "Btn_Tarama";
+            this.Btn_Tarama.UseVisualStyleBackColor = true;
+            this.Btn_Tarama.Click += new System.EventHandler(this.Btn_Tarama_Click);
             // 
             // Label4
             // 
@@ -205,16 +216,6 @@
             this.TableLayoutPanel1.Size = new System.Drawing.Size(850, 619);
             this.TableLayoutPanel1.TabIndex = 4;
             // 
-            // Btn_Tarama
-            // 
-            this.Btn_Tarama.Location = new System.Drawing.Point(227, 87);
-            this.Btn_Tarama.Name = "Btn_Tarama";
-            this.Btn_Tarama.Size = new System.Drawing.Size(101, 23);
-            this.Btn_Tarama.TabIndex = 9;
-            this.Btn_Tarama.Text = "Btn_Tarama";
-            this.Btn_Tarama.UseVisualStyleBackColor = true;
-            this.Btn_Tarama.Click += new System.EventHandler(this.Btn_Tarama_Click);
-            // 
             // Form_Tarama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +224,7 @@
             this.Controls.Add(this.TableLayoutPanel1);
             this.Name = "Form_Tarama";
             this.Text = "Form_Tarama";
+            this.TopMost = true;
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
             this.TableLayoutPanel2.ResumeLayout(false);

@@ -39,6 +39,7 @@
             this.Lbl_2 = new System.Windows.Forms.Label();
             this.PictureBox4 = new System.Windows.Forms.PictureBox();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
+            this.Lbl_Lisans = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).BeginInit();
@@ -143,13 +144,24 @@
             // PictureBox3
             // 
             this.PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox3.Image")));
-            this.PictureBox3.Location = new System.Drawing.Point(21, 374);
+            this.PictureBox3.Location = new System.Drawing.Point(39, 351);
             this.PictureBox3.Name = "PictureBox3";
             this.PictureBox3.Size = new System.Drawing.Size(100, 90);
             this.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBox3.TabIndex = 50;
             this.PictureBox3.TabStop = false;
             this.PictureBox3.Click += new System.EventHandler(this.PictureBox3_Click);
+            // 
+            // Lbl_Lisans
+            // 
+            this.Lbl_Lisans.AutoSize = true;
+            this.Lbl_Lisans.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Lbl_Lisans.ForeColor = System.Drawing.Color.Transparent;
+            this.Lbl_Lisans.Location = new System.Drawing.Point(12, 442);
+            this.Lbl_Lisans.Name = "Lbl_Lisans";
+            this.Lbl_Lisans.Size = new System.Drawing.Size(145, 13);
+            this.Lbl_Lisans.TabIndex = 51;
+            this.Lbl_Lisans.Text = "Tarantula @2025 Ver.1.9.8.0";
             // 
             // Form_Giris
             // 
@@ -158,6 +170,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(520, 463);
+            this.Controls.Add(this.Lbl_Lisans);
             this.Controls.Add(this.PictureBox3);
             this.Controls.Add(this.PictureBox4);
             this.Controls.Add(this.Lbl_2);
@@ -196,5 +209,6 @@
         private System.Windows.Forms.Label Lbl_2;
         private System.Windows.Forms.PictureBox PictureBox4;
         private System.Windows.Forms.PictureBox PictureBox3;
+        private System.Windows.Forms.Label Lbl_Lisans;
     }
 }

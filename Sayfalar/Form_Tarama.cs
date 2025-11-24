@@ -160,5 +160,13 @@ namespace Tarantula_MTSK.Sayfalar
         {
 
         }
+        private void Form_Tarama_Shown(object sender, EventArgs e)
+        {
+            this.TopMost = false;
+        }
+        private void GroupBox1_Enter_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

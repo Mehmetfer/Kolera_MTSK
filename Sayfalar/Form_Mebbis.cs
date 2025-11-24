@@ -12,10 +12,13 @@ namespace Tarantula_MTSK.Sayfalar
     public partial class Form_Mebbis : Form
     {
         private readonly MebbisService _mebbisService;
+        private readonly string _connectionString;
+        private Mebbis_Model _seciliKursiyer;
 
         public Form_Mebbis(string connectionString)
         {
             InitializeComponent();
+            _connectionString = connectionString;
             _mebbisService = new MebbisService(connectionString);
             this.Load += Form_Mebbis_Load;
         }
@@ -33,13 +36,13 @@ namespace Tarantula_MTSK.Sayfalar
             Dtg_Donemlerlistele.AllowUserToDeleteRows = false;
             Dtg_Donemlerlistele.RowHeadersVisible = false;
             Dtg_Donemlerlistele.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Dtg_Donemlerlistele.SelectionChanged += Dtg_Donemlerlistele_SelectionChanged;
         }
 
         private async Task LoadDonemlerAsync()
         {
             DataTable dt = await _mebbisService.GetDonemlerAsync();
 
-            // BEKLEYEN DÖNEM en başta
             DataRow dr = dt.NewRow();
             dr["ID"] = -1;
             dr["DONEM_ADI"] = "BEKLEYEN DÖNEM";
@@ -50,14 +53,6 @@ namespace Tarantula_MTSK.Sayfalar
             Combo_Donemler.DataSource = dt;
 
             Combo_Donemler.SelectedIndexChanged += Combo_Donemler_SelectedIndexChanged;
-            Dtg_Donemlerlistele.SelectionChanged += Dtg_Donemlerlistele_SelectionChanged;
-        }
-
-        private string EvrakDonusum(object value)
-        {
-            if (value == null || value == DBNull.Value) return "Yok";
-            string v = value.ToString().Trim().ToUpper();
-            return v == "VAR" ? "Var" : "Yok";
         }
 
         private async void Combo_Donemler_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,10 +60,8 @@ namespace Tarantula_MTSK.Sayfalar
             if (Combo_Donemler.SelectedValue == null) return;
 
             int donemId = Convert.ToInt32(Combo_Donemler.SelectedValue);
-
             DataTable dt = await _mebbisService.GetKursiyerByDonemIdAsync(donemId);
 
-            // Datagrid’de Var/Yok stringlerini güncelle
             foreach (DataRow row in dt.Rows)
             {
                 row["EkskOgrBel"] = EvrakDonusum(row["EkskOgrBel"]);
@@ -78,15 +71,20 @@ namespace Tarantula_MTSK.Sayfalar
                 row["EkskImza"] = EvrakDonusum(row["EkskImza"]);
             }
 
-            var viewTable = dt.DefaultView.ToTable(false,
+            Dtg_Donemlerlistele.DataSource = dt.DefaultView.ToTable(false,
                 "ID_KURSIYER", "ADI", "SOYADI", "TC_NO", "SERTIFIKA_SINIFI", "DONEM_ADI",
                 "EkskOgrBel", "EkskSaglik", "EkskSavcilik", "EkskSozlesme", "EkskImza"
             );
 
-            Dtg_Donemlerlistele.DataSource = viewTable;
-
             if (Dtg_Donemlerlistele.Columns.Contains("ID_KURSIYER"))
                 Dtg_Donemlerlistele.Columns["ID_KURSIYER"].Visible = false;
+        }
+
+        private string EvrakDonusum(object value)
+        {
+            if (value == null || value == DBNull.Value) return "Yok";
+            string v = value.ToString().Trim().ToUpper();
+            return v == "VAR" ? "Var" : "Yok";
         }
 
         private async void Dtg_Donemlerlistele_SelectionChanged(object sender, EventArgs e)
@@ -96,23 +94,18 @@ namespace Tarantula_MTSK.Sayfalar
             DataGridViewRow row = Dtg_Donemlerlistele.SelectedRows[0];
             int idKursiyer = Convert.ToInt32(row.Cells["ID_KURSIYER"].Value);
 
-            Mebbis_Model evrak = await _mebbisService.GetEvrakByKursiyerIdAsync(idKursiyer);
-            if (evrak == null) return;
+            _seciliKursiyer = await _mebbisService.GetEvrakByKursiyerIdAsync(idKursiyer);
+            if (_seciliKursiyer == null) return;
 
-            // Checkboxları doldur (boolean)
-           
+            Tnk_ADI.Text = _seciliKursiyer.ADI;
+            Tnk_SOYADI.Text = _seciliKursiyer.SOYADI;
+            Tnk_ADAY_NO.Text = _seciliKursiyer.ADAY_NO;
+            Cmb_SINIFI.Text = _seciliKursiyer.SERTIFIKA_SINIFI;
 
-            // TextBoxları doldur
-            Tnk_ADI.Text = evrak.ADI;
-            Tnk_SOYADI.Text = evrak.SOYADI;
-            Tnk_ADAY_NO.Text = evrak.ADAY_NO;
-            Cmb_SINIFI.Text = evrak.SERTIFIKA_SINIFI;
-
-            // Kursiyer resmi yükle
-            if (evrak.Foto != null)
+            if (_seciliKursiyer.Foto != null)
             {
                 Tnk_RESIM_Kursiyer.Image?.Dispose();
-                using (MemoryStream ms = new MemoryStream(evrak.Foto))
+                using (MemoryStream ms = new MemoryStream(_seciliKursiyer.Foto))
                 {
                     Tnk_RESIM_Kursiyer.Image = Image.FromStream(ms);
                 }
@@ -123,39 +116,37 @@ namespace Tarantula_MTSK.Sayfalar
             }
         }
 
-       
-          
-           private async void Btn_Resim_Kayit_Click(object sender, EventArgs e)
+        private void Btn_Aktar_Click(object sender, EventArgs e)
         {
-            // Veritabanından kullanıcı adı ve şifreyi çek
-            var (kullaniciAdi, sifre) = await _mebbisService.GetMebbisLoginAsync();
-
-            // MEBBİS giriş sayfasını aç
-            Web_Mebbis.Navigate("https://mebbis.meb.gov.tr");
-
-            Web_Mebbis.DocumentCompleted += (s, ev) =>
+            if (_seciliKursiyer == null)
             {
-                if (Web_Mebbis.Document != null)
-                {
-                    var doc = Web_Mebbis.Document;
+                MessageBox.Show("Önce bir kursiyer seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    // Kullanıcı adı inputu
-                    var txtKullanici = doc.GetElementById("txtKullaniciAd");
-                    if (txtKullanici != null)
-                        txtKullanici.SetAttribute("value", kullaniciAdi);
+            ShowMebbisForm();
+        }
 
-                    // Şifre inputu
-                    var txtSifre = doc.GetElementById("txtSifre");
-                    if (txtSifre != null)
-                        txtSifre.SetAttribute("value", sifre);
+        private void Btn_itele_Click(object sender, EventArgs e)
+        {
+            if (_seciliKursiyer == null)
+            {
+                MessageBox.Show("Önce bir kursiyer seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    // İsteğe bağlı: Giriş butonuna otomatik tıklamak
-                    // var btnGiris = doc.GetElementById("btnGiris");
-                    // btnGiris?.InvokeMember("click");
-                }
-            };
+            ShowMebbisForm();
+        }
+
+        private void ShowMebbisForm()
+        {
+            Form_Mebbis_Aktarim frm = new Form_Mebbis_Aktarim(_seciliKursiyer, _connectionString);
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
     }
-    }
-    
-
+}

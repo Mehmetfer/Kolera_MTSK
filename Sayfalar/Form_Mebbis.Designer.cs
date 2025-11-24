@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Mebbis));
             this.Tab_Mebbis = new System.Windows.Forms.TabControl();
             this.Tab_Mebbis1 = new System.Windows.Forms.TabPage();
+            this.Btn_itele = new System.Windows.Forms.Button();
+            this.Btn_Aktar = new System.Windows.Forms.Button();
             this.Dtg_Donemlerlistele = new System.Windows.Forms.DataGridView();
             this.Combo_Donemler = new System.Windows.Forms.ComboBox();
             this.Tab_Mebbis2 = new System.Windows.Forms.TabPage();
@@ -66,9 +68,9 @@
             this.Lbl_2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.Grp_4 = new System.Windows.Forms.GroupBox();
+            this.TxtSifre = new System.Windows.Forms.TextBox();
             this.TxtKullaniciAd = new System.Windows.Forms.TextBox();
             this.Lbl_Grp = new System.Windows.Forms.Label();
-            this.TxtSifre = new System.Windows.Forms.TextBox();
             this.Tab_Mebbis.SuspendLayout();
             this.Tab_Mebbis1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtg_Donemlerlistele)).BeginInit();
@@ -97,6 +99,8 @@
             // 
             // Tab_Mebbis1
             // 
+            this.Tab_Mebbis1.Controls.Add(this.Btn_itele);
+            this.Tab_Mebbis1.Controls.Add(this.Btn_Aktar);
             this.Tab_Mebbis1.Controls.Add(this.Dtg_Donemlerlistele);
             this.Tab_Mebbis1.Controls.Add(this.Combo_Donemler);
             this.Tab_Mebbis1.Location = new System.Drawing.Point(4, 22);
@@ -106,6 +110,25 @@
             this.Tab_Mebbis1.TabIndex = 0;
             this.Tab_Mebbis1.Text = "Kursiyer Lisesi";
             this.Tab_Mebbis1.UseVisualStyleBackColor = true;
+            // 
+            // Btn_itele
+            // 
+            this.Btn_itele.Location = new System.Drawing.Point(768, 7);
+            this.Btn_itele.Name = "Btn_itele";
+            this.Btn_itele.Size = new System.Drawing.Size(75, 23);
+            this.Btn_itele.TabIndex = 12;
+            this.Btn_itele.Text = "button1";
+            this.Btn_itele.UseVisualStyleBackColor = true;
+            this.Btn_itele.Click += new System.EventHandler(this.Btn_itele_Click);
+            // 
+            // Btn_Aktar
+            // 
+            this.Btn_Aktar.Location = new System.Drawing.Point(670, 7);
+            this.Btn_Aktar.Name = "Btn_Aktar";
+            this.Btn_Aktar.Size = new System.Drawing.Size(91, 23);
+            this.Btn_Aktar.TabIndex = 11;
+            this.Btn_Aktar.Text = "Btn_Aktar";
+            this.Btn_Aktar.UseVisualStyleBackColor = true;
             // 
             // Dtg_Donemlerlistele
             // 
@@ -254,7 +277,6 @@
             this.Btn_Resim_Kayit.TabIndex = 0;
             this.Btn_Resim_Kayit.Text = "RESİM KAYIT";
             this.Btn_Resim_Kayit.UseVisualStyleBackColor = true;
-            this.Btn_Resim_Kayit.Click += new System.EventHandler(this.Btn_Resim_Kayit_Click);
             // 
             // Tab_Mebbis3
             // 
@@ -474,6 +496,14 @@
             this.Grp_4.TabStop = false;
             this.Grp_4.Text = "Grup / Dönem  Bilgileri";
             // 
+            // TxtSifre
+            // 
+            this.TxtSifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TxtSifre.Location = new System.Drawing.Point(17, 98);
+            this.TxtSifre.Name = "TxtSifre";
+            this.TxtSifre.Size = new System.Drawing.Size(211, 20);
+            this.TxtSifre.TabIndex = 50;
+            // 
             // TxtKullaniciAd
             // 
             this.TxtKullaniciAd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -492,19 +522,11 @@
             this.Lbl_Grp.TabIndex = 58;
             this.Lbl_Grp.Text = "Grup Dönem Bilgisi";
             // 
-            // TxtSifre
-            // 
-            this.TxtSifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TxtSifre.Location = new System.Drawing.Point(17, 98);
-            this.TxtSifre.Name = "TxtSifre";
-            this.TxtSifre.Size = new System.Drawing.Size(211, 20);
-            this.TxtSifre.TabIndex = 50;
-            // 
             // Form_Mebbis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 848);
+            this.ClientSize = new System.Drawing.Size(1210, 660);
             this.Controls.Add(this.Grp_4);
             this.Controls.Add(this.Grp_3);
             this.Controls.Add(this.Grp_2);
@@ -575,5 +597,7 @@
         private System.Windows.Forms.Button Btn_Resim_Kayit;
         private System.Windows.Forms.WebBrowser Web_Mebbis;
         private System.Windows.Forms.TextBox TxtSifre;
+        private System.Windows.Forms.Button Btn_Aktar;
+        private System.Windows.Forms.Button Btn_itele;
     }
 }

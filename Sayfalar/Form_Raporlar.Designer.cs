@@ -98,12 +98,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 450);
+            this.ClientSize = new System.Drawing.Size(1194, 621);
             this.Controls.Add(this.PictureBox4);
             this.Controls.Add(this.Btn_Sil);
             this.Controls.Add(this.Btn_Evrak);
             this.Controls.Add(this.Btn_Kaydet);
             this.Controls.Add(this.PictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Raporlar";
             this.Text = "Form_Raporlar";
             this.Load += new System.EventHandler(this.Form_Raporlar_Load);

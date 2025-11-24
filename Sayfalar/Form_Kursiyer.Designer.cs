@@ -85,9 +85,9 @@ namespace Tarantula_MTSK.Sayfalar
             this.Tnk_GSM_1 = new System.Windows.Forms.TextBox();
             this.PictureBox4 = new System.Windows.Forms.PictureBox();
             this.Btn_Sil = new System.Windows.Forms.Button();
+            this.Btn_Evrak = new System.Windows.Forms.Button();
             this.Btn_Kaydet = new System.Windows.Forms.Button();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Btn_Evrak = new System.Windows.Forms.Button();
             this.Grp_6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_11)).BeginInit();
             this.Grp_1.SuspendLayout();
@@ -107,6 +107,7 @@ namespace Tarantula_MTSK.Sayfalar
             this.Grp_7.Size = new System.Drawing.Size(1067, 20);
             this.Grp_7.TabIndex = 29;
             this.Grp_7.TabStop = false;
+            this.Grp_7.Enter += new System.EventHandler(this.Grp_7_Enter);
             // 
             // Btn_cek
             // 
@@ -134,6 +135,7 @@ namespace Tarantula_MTSK.Sayfalar
             this.Btn_Tarama.TabIndex = 36;
             this.Btn_Tarama.Text = "Tara";
             this.Btn_Tarama.UseVisualStyleBackColor = true;
+            this.Btn_Tarama.Click += new System.EventHandler(this.Btn_Tarama_Click);
             // 
             // Btn_EkleResim
             // 
@@ -664,6 +666,19 @@ namespace Tarantula_MTSK.Sayfalar
             this.Btn_Sil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Sil.UseVisualStyleBackColor = true;
             // 
+            // Btn_Evrak
+            // 
+            this.Btn_Evrak.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Evrak.Image")));
+            this.Btn_Evrak.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Evrak.Location = new System.Drawing.Point(795, 22);
+            this.Btn_Evrak.Name = "Btn_Evrak";
+            this.Btn_Evrak.Size = new System.Drawing.Size(76, 75);
+            this.Btn_Evrak.TabIndex = 0;
+            this.Btn_Evrak.Text = "EVRAK ";
+            this.Btn_Evrak.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Evrak.UseVisualStyleBackColor = true;
+            this.Btn_Evrak.Click += new System.EventHandler(this.Btn_Evrak_Click);
+            // 
             // Btn_Kaydet
             // 
             this.Btn_Kaydet.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Kaydet.Image")));
@@ -686,24 +701,11 @@ namespace Tarantula_MTSK.Sayfalar
             this.PictureBox1.TabIndex = 0;
             this.PictureBox1.TabStop = false;
             // 
-            // Btn_Evrak
-            // 
-            this.Btn_Evrak.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Evrak.Image")));
-            this.Btn_Evrak.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Evrak.Location = new System.Drawing.Point(795, 22);
-            this.Btn_Evrak.Name = "Btn_Evrak";
-            this.Btn_Evrak.Size = new System.Drawing.Size(76, 75);
-            this.Btn_Evrak.TabIndex = 0;
-            this.Btn_Evrak.Text = "EVRAK ";
-            this.Btn_Evrak.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Evrak.UseVisualStyleBackColor = true;
-            this.Btn_Evrak.Click += new System.EventHandler(this.Btn_Evrak_Click);
-            // 
             // Form_Kursiyer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 769);
+            this.ClientSize = new System.Drawing.Size(1210, 660);
             this.ControlBox = false;
             this.Controls.Add(this.PictureBox4);
             this.Controls.Add(this.Btn_Sil);

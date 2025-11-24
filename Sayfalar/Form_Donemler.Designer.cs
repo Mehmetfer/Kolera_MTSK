@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 620);
+            this.ClientSize = new System.Drawing.Size(1210, 660);
             this.Controls.Add(this.Dtg_goster);
             this.Controls.Add(this.Btn_Sil);
             this.Controls.Add(this.Btn_Donem_Ekle);

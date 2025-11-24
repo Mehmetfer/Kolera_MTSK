@@ -74,7 +74,7 @@ namespace Tarantula_MTSK.Sayfalar
                 Tnk_KIM_ANA_ADI.Text = model.KIM_ANA_ADI ?? string.Empty;
                 Tnk_KIM_DOGUM_YERI.Text = model.KIM_DOGUM_YERI ?? string.Empty;
                 Tnk_Adres.Text = model.EV_ADRESI ?? string.Empty;
-                Tnk_ADAY_NO.Text = model.ADAY_NO ?? string.Empty;
+                Tnk_ADAY_NO.Text = model.ADAY_NO.ToString();
                 Tnk_Referans.Text = model.SARI_NOTLAR ?? string.Empty;
 
                 Tnk_DOGUM_TARIHI.Value = model.DOGUM_TARIHI ?? DateTime.Now;
@@ -216,7 +216,9 @@ namespace Tarantula_MTSK.Sayfalar
                         resimBytes = ms.ToArray();
                     }
                 }
-
+                int adayNo = 0;
+                int.TryParse(Tnk_ADAY_NO.Text.Trim(), out adayNo);
+               
                 var model = new Kursiyer_Model
                 {
                     ID = _aktifModel?.ID ?? 0,
@@ -229,7 +231,7 @@ namespace Tarantula_MTSK.Sayfalar
                     KIM_BABA_ADI = Tnk_KIM_BABA_ADI.Text.Trim(),
                     KIM_DOGUM_YERI = Tnk_KIM_DOGUM_YERI.Text.Trim(),
                     EV_ADRESI = Tnk_Adres.Text.Trim(),
-                    ADAY_NO = Tnk_ADAY_NO.Text.Trim(),
+                    ADAY_NO = adayNo,
                     SARI_NOTLAR = Tnk_Referans.Text.Trim(),
                     DOGUM_TARIHI = Tnk_DOGUM_TARIHI.Value,
                     KAYIT_TARIHI = Tnk_KAYIT_TARIHI.Value,
@@ -286,21 +288,71 @@ namespace Tarantula_MTSK.Sayfalar
         {
             if (_aktifModel == null)
             {
-                MessageBox.Show("Önce bir kursiyer seçiniz.");
+                MessageBox.Show("Önce bir kursiyer seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var frm = new Form_Kursiyer_Ogrenim(_aktifModel, _aramaServis);
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
+            var kursiyerForm = new Form_Kursiyer_Ogrenim(_aktifModel, _aramaServis)
+            {
+                StartPosition = FormStartPosition.CenterParent,
+                TopMost = true // istersen ekleyebilirsin
+            };
+
+            kursiyerForm.ShowDialog(this); // owner olarak ana formu veriyoruz
         }
+       
 
         private void PictureBox4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // Kursiyer seçili mi kontrol et
+            if (_aktifModel == null)
+            {
+                MessageBox.Show("Önce bir kursiyer seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Formu object initializer ile oluştur ve StartPosition ayarla
+            var raporForm = new Form_RaporGoruntule(_aktifModel)
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+
+            // Formu göster
+            raporForm.ShowDialog();
         }
 
         private void Btn_EkleResim_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Title = "Resim Seçiniz";
+                    ofd.Filter = "Resim Dosyaları (*.jpg; *.jpeg; *.png)|*.jpg;*.jpeg;*.png";
+
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        Tnk_RESIM_Kursiyer.Image = Image.FromFile(ofd.FileName);
+                        Tnk_RESIM_Kursiyer.Tag = ofd.FileName;   // gerekirse dosya yolu
+
+                        MessageBox.Show("Resim başarıyla yüklendi!", "Bilgi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Resim yüklenirken hata oluştu:\n" + ex.Message,
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Grp_7_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Tarama_Click(object sender, EventArgs e)
         {
 
         }

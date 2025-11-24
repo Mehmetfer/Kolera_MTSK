@@ -243,7 +243,7 @@
             // 
             // Form_Araclar
             // 
-            this.ClientSize = new System.Drawing.Size(1215, 667);
+            this.ClientSize = new System.Drawing.Size(1210, 660);
             this.ControlBox = false;
             this.Controls.Add(this.Btn_Sil);
             this.Controls.Add(this.Lbl_9);

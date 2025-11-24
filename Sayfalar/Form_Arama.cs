@@ -178,7 +178,7 @@ namespace Tarantula_MTSK.Sayfalar
                 SARI_NOTLAR = row["SARI_NOTLAR"]?.ToString(),
                 DOGUM_TARIHI = row["DOGUM_TARIHI"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["DOGUM_TARIHI"]) : null,
                 KAYIT_TARIHI = row["KAYIT_TARIHI"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["KAYIT_TARIHI"]) : null,
-                ADAY_NO = row["ADAY_NO"]?.ToString(),
+                ADAY_NO = row["ADAY_NO"] != DBNull.Value ? Convert.ToInt32(row["ADAY_NO"]) : 0,
                 GSM_2 = row["GSM_2"]?.ToString(),
                 EV_ADRESI = row["EV_ADRESI"]?.ToString(),
                 EV_TELEFON = row["EV_TELEFON"]?.ToString(),
