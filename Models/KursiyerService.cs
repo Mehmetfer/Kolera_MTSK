@@ -35,7 +35,7 @@ namespace Tarantula_MTSK.Services
                 cmd.Parameters.AddWithValue("@KIM_ANA_ADI", model.KIM_ANA_ADI ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@KIM_DOGUM_YERI", model.KIM_DOGUM_YERI ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@EV_ADRESI", model.EV_ADRESI ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@ADAY_NO", model.ADAY_NO ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@ADAY_NO", model.ADAY_NO != 0 ? (object)model.ADAY_NO : DBNull.Value);
                 cmd.Parameters.AddWithValue("@SARI_NOTLAR", model.SARI_NOTLAR ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@DOGUM_TARIHI", model.DOGUM_TARIHI);
                 cmd.Parameters.AddWithValue("@KAYIT_TARIHI", model.KAYIT_TARIHI);
@@ -84,7 +84,7 @@ namespace Tarantula_MTSK.Services
                 cmd.Parameters.AddWithValue("@KIM_ANA_ADI", model.KIM_ANA_ADI ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@KIM_DOGUM_YERI", model.KIM_DOGUM_YERI ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@EV_ADRESI", model.EV_ADRESI ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@ADAY_NO", model.ADAY_NO ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@ADAY_NO", model.ADAY_NO != 0 ? (object)model.ADAY_NO : DBNull.Value);
                 cmd.Parameters.AddWithValue("@SARI_NOTLAR", model.SARI_NOTLAR ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@DOGUM_TARIHI", model.DOGUM_TARIHI);
                 cmd.Parameters.AddWithValue("@KAYIT_TARIHI", model.KAYIT_TARIHI);

@@ -25,6 +25,7 @@ namespace Tarantula_MTSK.Models
         public string DONEMI { get; set; }
         public byte[] RESIM { get; set; }
         public byte[] Foto { get; set; }
+
         // ---------------------------
         // Evrak resimleri
         // ---------------------------
@@ -33,40 +34,49 @@ namespace Tarantula_MTSK.Models
         public byte[] ImgSavcilik { get; set; }
         public byte[] ImgSozlesme { get; set; }
         public byte[] ImgImza { get; set; }
+        public byte[] ImgSozlesme_On { get; set; }
+        public byte[] ImgSozlesme_Arka { get; set; }
+        public byte[] ImgFatura { get; set; }
 
         // ---------------------------
         // Evrak detay bilgileri
         // ---------------------------
+        public string OgrBelTuru { get; set; }
+        public string OgrBelgeVerenKurum { get; set; }
         public DateTime? OgrBelgeTarihi { get; set; }
         public string OgrBelgeNo { get; set; }
-        public string OgrBelgeTuru { get; set; }
-        public string OgrBelgeVerenKurum { get; set; }
         public string OgrBelgeSayisi { get; set; }
 
-        public string SaglikBelverenKurum { get; set; }
-        public string SaglikBelgeNo { get; set; }
-        public string SaglikBelgeSayisi { get; set; }
-        public DateTime? SaglikBelgeTarihi { get; set; }
-        public string SaglikBelgeVerenKurum { get; set; }
-        public string SaglikBelReferans { get; set; }
+        public string SaglikRaporVerenKurum { get; set; }
+        public DateTime? SaglikRaporTarihi { get; set; }
+        public string SaglikRaporNo { get; set; }
+        public string SaglikRaporReferans { get; set; }
 
-        public string SavcilikBelgeVerenKurum { get; set; }
-        public string SavcilikBelgeNo { get; set; }
-        public DateTime? SavcilikBelgeTarihi { get; set; }
+        public string SavcilikBelgeVerenKurum { get; set; }  // eski "SavcilikBelVerVerenKurum"
+        public DateTime? SavcilikBelgeTarihi { get; set; }   // eski "SavcilikBelTarihi"
+        public string SavcilikBelgeNo { get; set; }          // eski "SavcilikBelNo"
 
-        public DateTime? SozlesmeTarihi { get; set; }
+        public string OzurDurumu { get; set; }
+        public string YabanciDil { get; set; }
+
+        public string FaturaNo { get; set; }
+        public DateTime? FaturaTarihi { get; set; }
+        public decimal? FaturaTutari { get; set; }
 
         // ---------------------------
         // Ekstra resimler / belgeler
         // ---------------------------
         public byte[] ImgMTSKSertifika { get; set; }
         public byte[] ImgMuracaat { get; set; }
-        public byte[] ImgSozlesme_On { get; set; }
-        public byte[] ImgSozlesme_Arka { get; set; }
         public byte[] ImgDiger1 { get; set; }
         public byte[] ImgDiger2 { get; set; }
         public byte[] ImgDiger3 { get; set; }
-        public byte[] ImgFatura { get; set; }
+        public byte[] ImgSozlesmeOn { get; set; }
+        public byte[] ImgSozlesmeArka { get; set; }
+        // Web linki
+        // ---------------------------
+        public string URL { get; set; }
+        
 
         // ---------------------------
         // Zaman bilgisi
@@ -74,3 +84,6 @@ namespace Tarantula_MTSK.Models
         public DateTime Tarih { get; set; } = DateTime.MinValue;
     }
 }
+ 
+ 
+    

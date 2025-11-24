@@ -5,6 +5,9 @@ public class Kursiyer_Model
     public int ID { get; set; }
     public string TC_NO { get; set; }
     public string ADI { get; set; }
+    public int ID_EGITIM_ARACI { get; set; }  // <--- int olarak KURSIYER_DURUMU { get; set; }
+    public int ID_PERSONEL { get; set; }  // <--- int olarak
+    public int KURSIYER_DURUMU { get; set; } = 1; // varsayılan aktif 
     public string SOYADI { get; set; }
     public DateTime? DOGUM_TARIHI { get; set; }
     public DateTime? KAYIT_TARIHI { get; set; } = DateTime.Now;
@@ -13,7 +16,7 @@ public class Kursiyer_Model
     public string GSM_1 { get; set; }
     public string EV_ADRESI { get; set; }
     public byte[] RESIM { get; set; }
-    public string ADAY_NO { get; set; }
+    public int ADAY_NO { get; set; }
     public string GSM_2 { get; set; }
      public string  EV_TELEFON { get; set; }
     public string Tnk_Referans { get; set; }
@@ -28,7 +31,8 @@ public class Kursiyer_Model
     public string MEVCUT_SINIFI { get; set; }
     public string YENI_SINIFI { get; set; }
     public string StifikaSinifi { get; set; }
-
+    public int ID_OZEL_KOD1 { get; set; }
+    public int ID_OZEL_KOD2 { get; set; }
     public string ONCE_SERT_SINIFI { get; set; }
    
     public int? ID_GRUP { get; set; }
@@ -44,6 +48,12 @@ public class Kursiyer_Model
     public DateTime? OgrBelgeTarihi { get; set; }
     public string OgrBelgeSayisi { get; set; }
     public byte[] OgrBelgeResmi { get; set; }
-   
 
+    public int Id { get; set; }
+    public string DonemAdi { get; set; }
+
+    public class SertifikaSinifi
+    {
+        public string SinifAdi { get; set; }
+    }
 }
