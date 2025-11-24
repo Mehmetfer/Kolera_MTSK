@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using Microsoft.Win32;  // ⭐ EKLENDİ
 using Tarantula_MTSK.Models;
 using Tarantula_MTSK.Sayfalar;
 
@@ -11,13 +12,12 @@ namespace Tarantula_MTSK
 {
     static class Program
     {
-        // Mutex ismi eşsiz olmalı
         private readonly static Mutex mutex = new Mutex(true, "TarantulaMTSKAppMutex");
 
         [STAThread]
         static void Main()
         {
-            // Program zaten çalışıyorsa
+            // Zaten açıksa engelle
             if (!mutex.WaitOne(TimeSpan.Zero, true))
             {
                 var result = MessageBox.Show(
@@ -28,18 +28,18 @@ namespace Tarantula_MTSK
 
                 if (result == DialogResult.Yes)
                 {
-                    try
-                    {
-                        Process.Start("taskmgr.exe");
-                    }
+                    try { Process.Start("taskmgr.exe"); }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Görev Yöneticisi açılamadı: " + ex.Message);
                     }
                 }
 
-                return; // Program ikinci kez açılmasın
+                return;
             }
+
+            // ⭐⭐⭐ IE11 MODU ZORLA ⭐⭐⭐
+            UygulamaIcinIE11Ayari();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -53,27 +53,37 @@ namespace Tarantula_MTSK
                 return;
             }
 
-            // -----------------------------
-            // ConnectionString Oluşturma
-            // -----------------------------
+            // ConnectionString oluştur
             if (serverAyar.BaglantiTuru == "Windows")
             {
-                // Windows Authentication
                 serverAyar.ConnectionString =
                     $"Server={serverAyar.Sunucu};Database={serverAyar.VeritabaniAdi};Trusted_Connection=True;TrustServerCertificate=True;";
             }
             else
             {
-                // SQL Authentication
                 serverAyar.ConnectionString =
                     $"Server={serverAyar.Sunucu};Database={serverAyar.VeritabaniAdi};User Id={serverAyar.KullaniciAdi};Password={serverAyar.Parola};TrustServerCertificate=True;";
             }
 
-            // Programı çalıştır
             Application.Run(new Form_Giris(serverAyar));
         }
 
-        // XML’den ServerAyar okuma
+        // IE11 FONKSİYONU
+        static void UygulamaIcinIE11Ayari()
+        {
+            try
+            {
+                string exeAdi = Application.ProductName + ".exe";
+
+                using (RegistryKey key = Registry.CurrentUser.CreateSubKey(
+                    @"Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION"))
+                {
+                    key.SetValue(exeAdi, 11001, RegistryValueKind.DWord);
+                }
+            }
+            catch { }
+        }
+
         static ServerAyar DeserializeServerAyar(string xmlFilePath)
         {
             if (!File.Exists(xmlFilePath))
