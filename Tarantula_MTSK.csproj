@@ -314,6 +314,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormLisansHelper.cs" />
     <Compile Include="Models\AracService.cs" />
     <Compile Include="Models\Arac_Model.cs" />
     <Compile Include="Models\AramaService.cs" />
@@ -331,6 +332,9 @@
     <Compile Include="Models\Kursiyer_Model.cs" />
     <Compile Include="Models\Kurs_Ayar_Model.cs" />
     <Compile Include="Models\Kurs_Ayar_Service.cs" />
+    <Compile Include="Models\LicenseManager.cs" />
+    <Compile Include="Models\LisansService.cs" />
+    <Compile Include="Models\Lisans_Model.cs" />
     <Compile Include="Models\MebbisService.cs" />
     <Compile Include="Models\Mebbis_Model.cs" />
     <Compile Include="Models\PersonelService.cs" />
