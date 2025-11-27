@@ -665,6 +665,7 @@ namespace Tarantula_MTSK.Sayfalar
             this.Btn_Sil.Text = "SİL";
             this.Btn_Sil.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Sil.UseVisualStyleBackColor = true;
+            
             // 
             // Btn_Evrak
             // 

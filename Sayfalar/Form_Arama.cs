@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarantula_MTSK.Models;
 using Tarantula_MTSK.Services;
+using Tarantula_MTSK.Helpers;
 
 namespace Tarantula_MTSK.Sayfalar
 {
@@ -58,6 +59,7 @@ namespace Tarantula_MTSK.Sayfalar
         {
             StilAyarla();
             await ListeleAsync();
+             
         }
 
         private void StilAyarla()

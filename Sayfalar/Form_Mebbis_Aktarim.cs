@@ -57,8 +57,13 @@ namespace Tarantula_MTSK.Sayfalar
             Lbl_Menu3.Click += (s, e) => MenuClicked(3);
             Lbl_Menu4.Click += (s, e) => MenuClicked(4);
             Lbl_Menu5.Click += (s, e) => MenuClicked(5);
-            //Lbl_Menu6.Click += (s, e) => MenuClicked(6);
+            Lbl_Menu6.Click += (s, e) => MenuClicked(6);
             Lbl_Menu7.Click += (s, e) => MenuClicked(7);
+            Lbl_Menu8.Click += (s, e) => MenuClicked(8);
+            Lbl_Menu9.Click += (s, e) => MenuClicked(9);
+            Lbl_Menu10.Click += (s, e) => MenuClicked(10);
+
+
 
             InitializeWebViewAsync();
         }
@@ -126,17 +131,7 @@ namespace Tarantula_MTSK.Sayfalar
             try
             {
                 await Web_Mebbis.EnsureCoreWebView2Async();
-
-                string mebbisUrl = "https://mebbis.meb.gov.tr/";
-                try
-                {
-                    var linkModel = await _mebbisService.GetLinkByIdAsync(23);
-                    if (linkModel != null && !string.IsNullOrWhiteSpace(linkModel.URL))
-                        if (Uri.IsWellFormedUriString(linkModel.URL.Trim(), UriKind.Absolute))
-                            mebbisUrl = linkModel.URL.Trim();
-                }
-                catch { }
-
+                string mebbisUrl = "https://mebbis.meb.gov.tr/SKT/skt00001.aspx";
                 Txt_Link.Text = mebbisUrl;
                 Web_Mebbis.CoreWebView2.Navigate(mebbisUrl);
             }
@@ -191,86 +186,64 @@ namespace Tarantula_MTSK.Sayfalar
             }
         }
 
-        private async void Lbl_Menu1_Click(object sender, EventArgs e)
+       
+           
+           private async void Lbl_Menu1_Click(object sender, EventArgs e)
         {
             if (Web_Mebbis?.CoreWebView2 == null)
             {
-                MessageBox.Show("Web tarayıcı henüz hazır değil!", "HATA",
+                MessageBox.Show("Web tarayıcı hazır değil!", "HATA",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // Özel MTSK Modülü butonunu tıklamak için retry mekanizması
-                string mtskScript = @"
-            function clickButtonByText(text) {
-                let btn = Array.from(document.querySelectorAll('button, a')).find(x => x.innerText.includes(text));
+                // 1. İlk sayfayı aç
+                Web_Mebbis.CoreWebView2.Navigate("https://mebbis.meb.gov.tr/SKT/skt00001.aspx");
+
+                // 2. 10 saniye bekle
+                await Task.Delay(10000);
+
+                // 3. Aday Dönem Kayıt İşlemleri sayfasını aç
+                Web_Mebbis.CoreWebView2.Navigate("https://mebbis.meb.gov.tr/SKT/skt02001.aspx");
+
+                // 4. Sayfanın yüklenmesini kısa bekleme ile garanti altına al
+                await Task.Delay(2000);
+
+                // 5. “Aday Kayıt İşlemleri” butonunu JavaScript ile tıkla
+                string clickAdayKayitJs = @"
+            (function(){
+                const btn = Array.from(document.querySelectorAll('td, a, button'))
+                                 .find(x => x.textContent.includes('Aday Kayıt İşlemleri'));
                 if(btn){ btn.click(); return true; }
                 return false;
-            }
-            clickButtonByText('Özel MTSK Modülü');
+            })();
         ";
 
                 bool clicked = false;
                 int retries = 0;
                 while (!clicked && retries < 10)
                 {
-                    var result = await Web_Mebbis.ExecuteScriptAsync(mtskScript);
-                    // ExecuteScriptAsync true/false döndürür string olarak
+                    var result = await Web_Mebbis.ExecuteScriptAsync(clickAdayKayitJs);
                     clicked = result != null && result.Contains("true");
-                    if (!clicked)
-                    {
-                        await Task.Delay(500); // yarım saniye bekle
-                        retries++;
-                    }
+                    if (!clicked) { await Task.Delay(500); retries++; }
                 }
 
                 if (!clicked)
                 {
-                    MessageBox.Show("Özel MTSK Modülü butonu bulunamadı veya tıklanamadı!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Aday Kayıt İşlemleri butonuna tıklanamadı!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                // Sayfanın yüklenmesini bekle
-                await Task.Delay(1000);
-
-                // Aday Kayıt İşlemleri butonuna tıklama
-                string adayScript = @"
-            function clickButtonByText(text) {
-                let btn = Array.from(document.querySelectorAll('button, a')).find(x => x.innerText.includes(text));
-                if(btn){ btn.click(); return true; }
-                return false;
-            }
-            clickButtonByText('Aday Kayıt İşlemleri');
-        ";
-
-                clicked = false;
-                retries = 0;
-                while (!clicked && retries < 10)
-                {
-                    var result2 = await Web_Mebbis.ExecuteScriptAsync(adayScript);
-                    clicked = result2 != null && result2.Contains("true");
-                    if (!clicked)
-                    {
-                        await Task.Delay(500);
-                        retries++;
-                    }
-                }
-
-                if (!clicked)
-                {
-                    MessageBox.Show("Aday Kayıt İşlemleri butonu bulunamadı veya tıklanamadı!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Menü tıklama hatası: " + ex.Message, "HATA",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hata: " + ex.Message, "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
+
+        
 
         private async void MenuClicked(int menuId)
         {
@@ -286,6 +259,11 @@ namespace Tarantula_MTSK.Sayfalar
                 await Web_Mebbis.ExecuteScriptAsync($"alert('Menu {menuId} tıklandı');");
             }
             catch { }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

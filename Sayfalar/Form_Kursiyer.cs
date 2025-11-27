@@ -276,6 +276,7 @@ namespace Tarantula_MTSK.Sayfalar
                     await _kursiyerServis.DeleteKursiyerAsync(_aktifModel.ID);
                     MessageBox.Show("Kursiyer başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AlanlariTemizle();
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -356,5 +357,7 @@ namespace Tarantula_MTSK.Sayfalar
         {
 
         }
+
+       
     }
 }

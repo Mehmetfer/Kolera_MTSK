@@ -81,7 +81,6 @@ namespace Tarantula_MTSK.Sayfalar
             this.Menumain.Size = new System.Drawing.Size(1439, 94);
             this.Menumain.TabIndex = 18;
             this.Menumain.Text = "Menu";
-            this.Menumain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Menumain_ItemClicked);
             // 
             // Anasayfa
             // 
@@ -93,7 +92,6 @@ namespace Tarantula_MTSK.Sayfalar
             this.Anasayfa.Text = "Anasayfa";
             this.Anasayfa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Anasayfa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Anasayfa.Click += new System.EventHandler(this.Anasayfa_Click_1);
             // 
             // Kursiyer
             // 
@@ -254,9 +252,9 @@ namespace Tarantula_MTSK.Sayfalar
             // Lbl_Lisans
             // 
             this.Lbl_Lisans.AutoSize = true;
-            this.Lbl_Lisans.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Lbl_Lisans.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Lbl_Lisans.ForeColor = System.Drawing.Color.Transparent;
-            this.Lbl_Lisans.Location = new System.Drawing.Point(1256, 794);
+            this.Lbl_Lisans.Location = new System.Drawing.Point(1158, 784);
             this.Lbl_Lisans.Name = "Lbl_Lisans";
             this.Lbl_Lisans.Size = new System.Drawing.Size(145, 13);
             this.Lbl_Lisans.TabIndex = 27;

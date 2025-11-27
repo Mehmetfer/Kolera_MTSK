@@ -1,172 +1,100 @@
 ﻿using ScannerDemo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WIA;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
 
 namespace Tarantula_MTSK.Sayfalar
 {
     public partial class Form_Tarama : Form
     {
-        public Form_Tarama()
+        private byte[] mevcutResim; // Önceden varsa gönderilecek
+        public event Action<byte[]> TaramaTamamlandi;
+
+        public Form_Tarama(byte[] mevcutResim = null)
         {
             InitializeComponent();
+            this.mevcutResim = mevcutResim;
+            this.Load += Form_Tarama_Load;
+
+            Btn_Tara.Click += Btn_Tara_Click;
+            Btn_Dosya.Click += Btn_Dosya_Click;
         }
-        private void Form1_Tarama_Load(object sender, EventArgs e)
+
+        private void Form_Tarama_Load(object sender, EventArgs e)
         {
-            ListScanners();
-
-            // Set start output folder TMP
-            TextBox1.Text = Path.GetTempPath();
-            // Set JPEG as default
-            ComboBox1.SelectedIndex = 1;
-
-        }
-        private void ListScanners()
-        {
-            // Clear the ListBox.
-            ListBox1.Items.Clear();
-
-            // Create a DeviceManager instance
-            var deviceManager = new DeviceManager();
-
-            // Loop through the list of devices and add the name to the listbox
-            for (int i = 1; i <= deviceManager.DeviceInfos.Count; i++)
+            if (mevcutResim != null && mevcutResim.Length > 0)
             {
-                // Add the device only if it's a scanner
-                if (deviceManager.DeviceInfos[i].Type != WiaDeviceType.ScannerDeviceType)
-                {
-                    continue;
-                }
-
-                // Add the Scanner device to the listbox (the entire DeviceInfos object)
-                // Important: we store an object of type scanner (which ToString method returns the name of the scanner)
-                ListBox1.Items.Add(
-                    new Scanner(deviceManager.DeviceInfos[i])
-                );
+                using (var ms = new MemoryStream(mevcutResim))
+                    RESIM_TARAMA.Image = Image.FromStream(ms);
             }
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
+        // 🔹 Public property ekliyoruz
+        public PictureBox ResimBox
         {
-
+            get { return RESIM_TARAMA; }
         }
 
-        private void Btn_Tarama_Click(object sender, EventArgs e)
+        private void Btn_Tara_Click(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(StartScanning).ContinueWith(result => TriggerScan());
-        }
-        private void TriggerScan()
-        {
-            Console.WriteLine("Image succesfully scanned");
-        }
-
-        public void StartScanning()
-        {
-            Scanner device = null;
-
-            this.Invoke(new MethodInvoker(delegate ()
-            {
-                device = ListBox1.SelectedItem as Scanner;
-            }));
-
+            Scanner device = ListBox1.SelectedItem as Scanner;
             if (device == null)
             {
-                MessageBox.Show("You need to select first an scanner device from the list",
-                                "Warning",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else if (String.IsNullOrEmpty(TextBox2.Text))
-            {
-                MessageBox.Show("Provide a filename",
-                                "Warning",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lütfen bir tarayıcı seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ImageFile image = new ImageFile();
-            string imageExtension = "";
-
-            this.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                switch (ComboBox1.SelectedIndex)
+                ImageFile image = device.ScanImage(WIA.FormatID.wiaFormatJPEG);
+                var tempFile = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".jpg");
+                image.SaveFile(tempFile);
+
+                FileInfo fi = new FileInfo(tempFile);
+                if (fi.Length < 10 * 1024 || fi.Length > 100 * 1024)
                 {
-                    case 0:
-                        image = device.ScanImage(WIA.FormatID.wiaFormatPNG);
-                        imageExtension = ".png";
-                        break;
-                    case 1:
-                        image = device.ScanImage(WIA.FormatID.wiaFormatJPEG);
-                        imageExtension = ".jpeg";
-                        break;
-                    case 2:
-                        image = device.ScanImage(WIA.FormatID.wiaFormatBMP);
-                        imageExtension = ".bmp";
-                        break;
-                    case 3:
-                        image = device.ScanImage(WIA.FormatID.wiaFormatGIF);
-                        imageExtension = ".gif";
-                        break;
-                    case 4:
-                        image = device.ScanImage(WIA.FormatID.wiaFormatTIFF);
-                        imageExtension = ".tiff";
-                        break;
+                    MessageBox.Show("Dosya boyutu 10KB - 100KB arasında olmalıdır!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-            }));
 
+                byte[] imgBytes = File.ReadAllBytes(tempFile);
+                RESIM_TARAMA.Image = Image.FromFile(tempFile);
 
-            // Save the image
-            var path = Path.Combine(TextBox1.Text, TextBox2.Text + imageExtension);
-
-            if (File.Exists(path))
-            {
-                File.Delete(path);
+                // Ana forma gönder
+                TaramaTamamlandi?.Invoke(imgBytes);
+                this.Close();
             }
-
-            image.SaveFile(path);
-
-            PictureBox1.Image = new Bitmap(path);
-        }
-
-        private void Btn_sec_Click(object sender, EventArgs e)
-        {
-            using (var folderDlg = new FolderBrowserDialog
+            catch (Exception ex)
             {
-                ShowNewFolderButton = true
-            })
-            {
-                DialogResult result = folderDlg.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    // Seçilen klasör yolu:
-                    Console.WriteLine(folderDlg.SelectedPath);
-                    // Burada işlemler yapılabilir
-                }
+                MessageBox.Show("Tarama sırasında hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void PictureBox1_Click(object sender, EventArgs e)
+        private void Btn_Dosya_Click(object sender, EventArgs e)
         {
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "JPEG Dosyaları|*.jpg;*.jpeg"
+            };
 
-        }
-        private void Form_Tarama_Shown(object sender, EventArgs e)
-        {
-            this.TopMost = false;
-        }
-        private void GroupBox1_Enter_1(object sender, EventArgs e)
-        {
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                FileInfo fi = new FileInfo(ofd.FileName);
+                if (fi.Length < 10 * 1024 || fi.Length > 100 * 1024)
+                {
+                    MessageBox.Show("Dosya boyutu 10KB - 100KB arasında olmalıdır!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                byte[] imgBytes = File.ReadAllBytes(ofd.FileName);
+                RESIM_TARAMA.Image = Image.FromFile(ofd.FileName);
+
+                // Ana forma gönder
+                TaramaTamamlandi?.Invoke(imgBytes);
+                this.Close();
+            }
         }
     }
 }

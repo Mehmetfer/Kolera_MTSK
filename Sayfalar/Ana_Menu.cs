@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Tarantula_MTSK.Models;
-using Tarantula_MTSK.Sayfalar;
 using Tarantula_MTSK.Services;
-
+using Tarantula_MTSK.Helpers;
 
 namespace Tarantula_MTSK.Sayfalar
 {
@@ -16,17 +15,23 @@ namespace Tarantula_MTSK.Sayfalar
 
         public Ana_Menu(ServerAyar serverAyar)
         {
-            // Formu tam ekran yap
+            _serverAyar = serverAyar ?? throw new ArgumentNullException(nameof(serverAyar));
+
+            InitializeComponent();
+            this.IsMdiContainer = true;
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
             this.TopMost = true;
 
+            // Lisans bilgisini label'a yaz
+            FormLisansHelper.SetLisansLabel(Lbl_Lisans);
 
-
-
-            _serverAyar = serverAyar ?? throw new ArgumentNullException(nameof(serverAyar));
-            InitializeComponent();
-            this.IsMdiContainer = true;
+            // Arama butonunu lisans durumuna göre kilitle
+            if (!LicenseManager.IsLicensed)
+            {
+                Mebbis_Button.Enabled = false; // ToolStripMenuItem için Enabled yeterli
+                Arama_Button.ToolTipText = "Bu özellik lisans gerektiriyor.";
+            }
 
             // AramaService başlat
             _aramaServis = new AramaService(_serverAyar.ConnectionString);
@@ -35,7 +40,6 @@ namespace Tarantula_MTSK.Sayfalar
             Anasayfa.Click += Anasayfa_Click;
             Kursiyer_Ekle.Click += Kursiyer_Ekle_Click;
             Arama_Button.Click += Arama_Button_Click;
-            
             
         }
 
@@ -58,58 +62,40 @@ namespace Tarantula_MTSK.Sayfalar
             childForm.Show();
         }
 
+        private void Anasayfa_Click(object sender, EventArgs e)
+        {
+            currentChildForm?.Close();
+            currentChildForm = null;
+        }
+
         private void Kursiyer_Ekle_Click(object sender, EventArgs e)
         {
-
-            // Form zaten açıksa öne getir
             if (Application.OpenForms["Form_Kursiyer_ekle"] is Form mevcut)
             {
                 mevcut.BringToFront();
                 return;
             }
 
-            // Yeni kursiyer formunu oluştur
             var frmYeniKursiyer = new Form_Kursiyer_ekle(_serverAyar.ConnectionString);
-
-            // Child olarak aç
             OpenChildForm(frmYeniKursiyer, "Form_Kursiyer_ekle");
         }
 
         private void Arama_Button_Click(object sender, EventArgs e)
         {
+            if (!LicenseManager.IsLicensed) return;
+
             var frmArama = new Form_Arama(_serverAyar.ConnectionString);
             OpenChildForm(frmArama, "Form_Arama");
         }
 
-        private void Anasayfa_Click(object sender, EventArgs e)
+        private void Pic_exit_Click(object sender, EventArgs e)
         {
-            // Anasayfa işlemi
-        }
-
-        private void PictureBox4_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Programı kapatmak istediğinizden emin misiniz?", "Çıkış Onayı",
-                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (MessageBox.Show("Programdan çıkmak istediğinizden emin misiniz?", "Çıkış Onayı",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
                 Application.Exit();
+            }
         }
-
-       
-
-        private void Menumain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-       
-
-        private void Anasayfa_Click_1(object sender, EventArgs e)
-        {
-            currentChildForm?.Close();
-            currentChildForm = null;
-        }
-
-      
 
         private void Mebbis_Button_Click(object sender, EventArgs e)
         {
@@ -117,10 +103,10 @@ namespace Tarantula_MTSK.Sayfalar
             OpenChildForm(frmMebbis, "Form_Mebbis");
         }
 
-        private void Araclar_Button_Click(object sender, EventArgs e)
+        private void Donem_Grup_Click(object sender, EventArgs e)
         {
-            var frmAraclar = new Form_Araclar(_serverAyar); // ← ServerAyar nesnesi gönderiyoruz
-            OpenChildForm(frmAraclar, "Form_Araclar");
+            var frmDonemler = new Form_Donemler(_serverAyar.ConnectionString);
+            OpenChildForm(frmDonemler, "Form_Donemler");
         }
 
         private void Peronsel_Button_Click(object sender, EventArgs e)
@@ -137,7 +123,6 @@ namespace Tarantula_MTSK.Sayfalar
 
         private void Raporlar_Button_Click(object sender, EventArgs e)
         {
-
             var frmrapor = new Form_Raporlar(_serverAyar.ConnectionString);
             OpenChildForm(frmrapor, "Form_Raporlar");
         }
@@ -154,15 +139,15 @@ namespace Tarantula_MTSK.Sayfalar
             OpenChildForm(frmYardim, "Form_Yardim");
         }
 
-        private void Donem_Grup_Click(object sender, EventArgs e)
+        private void Araclar_Button_Click(object sender, EventArgs e)
         {
-            var frmDonemler = new Form_Donemler(_serverAyar.ConnectionString);
-            OpenChildForm(frmDonemler, "Form_Donemler");
+            var frmAraclar = new Form_Araclar(_serverAyar);
+            OpenChildForm(frmAraclar, "Form_Araclar");
         }
 
-        private void Pic_exit_Click(object sender, EventArgs e)
+        private void Pic_exit_1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
+            var result = MessageBox.Show(
         "Programdan çıkmak istediğinizden emin misiniz?",
         "Çıkış Onayı",
         MessageBoxButtons.YesNo,
@@ -171,40 +156,8 @@ namespace Tarantula_MTSK.Sayfalar
 
             if (result == DialogResult.Yes)
             {
-                Application.Exit();
-            }
-        }
-
-        private void Pic_exit_Click_1(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-       "Programdan çıkmak istediğinizden emin misiniz?",
-       "Çıkış Onayı",
-       MessageBoxButtons.YesNo,
-       MessageBoxIcon.Question
-   );
-
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void Pic_exit_1_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-      "Programdan çıkmak istediğinizden emin misiniz?",
-      "Çıkış Onayı",
-      MessageBoxButtons.YesNo,
-      MessageBoxIcon.Question
-  );
-
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
+                Application.Exit(); // Uygulamayı kapatır
             }
         }
     }
-    }
-    
-
+}

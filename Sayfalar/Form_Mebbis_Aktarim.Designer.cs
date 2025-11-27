@@ -30,16 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Mebbis_Aktarim));
             this.Grp_1 = new System.Windows.Forms.GroupBox();
-            this.Btn_Mebbisegir = new System.Windows.Forms.Button();
             this.Lbl_SOYADI = new System.Windows.Forms.Label();
             this.Lbl_Link = new System.Windows.Forms.Label();
             this.Lbl_ADI = new System.Windows.Forms.Label();
-            this.Lbl_2 = new System.Windows.Forms.Label();
-            this.Lbl_1 = new System.Windows.Forms.Label();
             this.Tnk_RESIM_Kursiyer = new System.Windows.Forms.PictureBox();
             this.Txt_Link = new System.Windows.Forms.TextBox();
-            this.Tnk_SOYADI = new System.Windows.Forms.TextBox();
-            this.Tnk_ADI = new System.Windows.Forms.TextBox();
             this.Btn_Giris = new System.Windows.Forms.Button();
             this.Grp_Mebbis = new System.Windows.Forms.GroupBox();
             this.Web_Mebbis = new Microsoft.Web.WebView2.WinForms.WebView2();
@@ -51,22 +46,27 @@
             this.B5 = new System.Windows.Forms.Button();
             this.B4 = new System.Windows.Forms.Button();
             this.P7 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.Lbl_Menu10 = new System.Windows.Forms.Label();
             this.B3 = new System.Windows.Forms.Button();
             this.P6 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.Lbl_Menu7 = new System.Windows.Forms.Label();
             this.B2 = new System.Windows.Forms.Button();
             this.P5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Lbl_Menu6 = new System.Windows.Forms.Label();
             this.B1 = new System.Windows.Forms.Button();
             this.P4 = new System.Windows.Forms.Panel();
-            this.Lbl_Menu7 = new System.Windows.Forms.Label();
+            this.Lbl_Menu5 = new System.Windows.Forms.Label();
             this.P2 = new System.Windows.Forms.Panel();
-            this.Lbl_Menu3 = new System.Windows.Forms.Label();
             this.Lbl_Menu2 = new System.Windows.Forms.Label();
             this.P3 = new System.Windows.Forms.Panel();
-            this.Lbl_Menu5 = new System.Windows.Forms.Label();
             this.Lbl_Menu4 = new System.Windows.Forms.Label();
+            this.Lbl_Menu3 = new System.Windows.Forms.Label();
+            this.Lbl_Menu8 = new System.Windows.Forms.Label();
+            this.Lbl_Menu9 = new System.Windows.Forms.Label();
+            this.Button_Aktar = new System.Windows.Forms.Button();
+            this.Pic_Web = new System.Windows.Forms.PictureBox();
+            this.Web_Button = new System.Windows.Forms.Button();
+            this.Lbl_Ehliyet = new System.Windows.Forms.Label();
             this.Grp_1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tnk_RESIM_Kursiyer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Web_Mebbis)).BeginInit();
@@ -78,44 +78,36 @@
             this.P4.SuspendLayout();
             this.P2.SuspendLayout();
             this.P3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Web)).BeginInit();
             this.SuspendLayout();
             // 
             // Grp_1
             // 
             this.Grp_1.BackColor = System.Drawing.Color.IndianRed;
-            this.Grp_1.Controls.Add(this.Btn_Mebbisegir);
+            this.Grp_1.Controls.Add(this.Lbl_ADI);
+            this.Grp_1.Controls.Add(this.Web_Button);
+            this.Grp_1.Controls.Add(this.Button_Aktar);
             this.Grp_1.Controls.Add(this.Lbl_SOYADI);
             this.Grp_1.Controls.Add(this.Lbl_Link);
-            this.Grp_1.Controls.Add(this.Lbl_ADI);
-            this.Grp_1.Controls.Add(this.Lbl_2);
-            this.Grp_1.Controls.Add(this.Lbl_1);
+            this.Grp_1.Controls.Add(this.Lbl_Ehliyet);
             this.Grp_1.Controls.Add(this.Tnk_RESIM_Kursiyer);
             this.Grp_1.Controls.Add(this.Txt_Link);
-            this.Grp_1.Controls.Add(this.Tnk_SOYADI);
-            this.Grp_1.Controls.Add(this.Tnk_ADI);
+            this.Grp_1.Controls.Add(this.Pic_Web);
             this.Grp_1.Location = new System.Drawing.Point(12, 12);
             this.Grp_1.Name = "Grp_1";
-            this.Grp_1.Size = new System.Drawing.Size(1159, 118);
+            this.Grp_1.Size = new System.Drawing.Size(1323, 118);
             this.Grp_1.TabIndex = 14;
             this.Grp_1.TabStop = false;
             this.Grp_1.Text = "KURSİYER";
             // 
-            // Btn_Mebbisegir
-            // 
-            this.Btn_Mebbisegir.Location = new System.Drawing.Point(405, 58);
-            this.Btn_Mebbisegir.Name = "Btn_Mebbisegir";
-            this.Btn_Mebbisegir.Size = new System.Drawing.Size(377, 54);
-            this.Btn_Mebbisegir.TabIndex = 18;
-            this.Btn_Mebbisegir.Text = "Mebbise Gir";
-            this.Btn_Mebbisegir.UseVisualStyleBackColor = true;
-            // 
             // Lbl_SOYADI
             // 
             this.Lbl_SOYADI.AutoSize = true;
-            this.Lbl_SOYADI.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Lbl_SOYADI.Location = new System.Drawing.Point(183, 67);
+            this.Lbl_SOYADI.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_SOYADI.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Lbl_SOYADI.Location = new System.Drawing.Point(218, 67);
             this.Lbl_SOYADI.Name = "Lbl_SOYADI";
-            this.Lbl_SOYADI.Size = new System.Drawing.Size(0, 18);
+            this.Lbl_SOYADI.Size = new System.Drawing.Size(0, 24);
             this.Lbl_SOYADI.TabIndex = 18;
             // 
             // Lbl_Link
@@ -131,35 +123,18 @@
             // Lbl_ADI
             // 
             this.Lbl_ADI.AutoSize = true;
-            this.Lbl_ADI.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Lbl_ADI.Location = new System.Drawing.Point(183, 28);
+            this.Lbl_ADI.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_ADI.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Lbl_ADI.Location = new System.Drawing.Point(217, 29);
             this.Lbl_ADI.Name = "Lbl_ADI";
-            this.Lbl_ADI.Size = new System.Drawing.Size(0, 18);
+            this.Lbl_ADI.Size = new System.Drawing.Size(0, 24);
             this.Lbl_ADI.TabIndex = 18;
-            // 
-            // Lbl_2
-            // 
-            this.Lbl_2.AutoSize = true;
-            this.Lbl_2.Location = new System.Drawing.Point(105, 64);
-            this.Lbl_2.Name = "Lbl_2";
-            this.Lbl_2.Size = new System.Drawing.Size(39, 13);
-            this.Lbl_2.TabIndex = 18;
-            this.Lbl_2.Text = "Soyadı";
-            // 
-            // Lbl_1
-            // 
-            this.Lbl_1.AutoSize = true;
-            this.Lbl_1.Location = new System.Drawing.Point(105, 28);
-            this.Lbl_1.Name = "Lbl_1";
-            this.Lbl_1.Size = new System.Drawing.Size(22, 13);
-            this.Lbl_1.TabIndex = 18;
-            this.Lbl_1.Text = "Adı";
             // 
             // Tnk_RESIM_Kursiyer
             // 
             this.Tnk_RESIM_Kursiyer.Location = new System.Drawing.Point(17, 17);
             this.Tnk_RESIM_Kursiyer.Name = "Tnk_RESIM_Kursiyer";
-            this.Tnk_RESIM_Kursiyer.Size = new System.Drawing.Size(71, 81);
+            this.Tnk_RESIM_Kursiyer.Size = new System.Drawing.Size(75, 68);
             this.Tnk_RESIM_Kursiyer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Tnk_RESIM_Kursiyer.TabIndex = 17;
             this.Tnk_RESIM_Kursiyer.TabStop = false;
@@ -171,20 +146,6 @@
             this.Txt_Link.Name = "Txt_Link";
             this.Txt_Link.Size = new System.Drawing.Size(365, 29);
             this.Txt_Link.TabIndex = 16;
-            // 
-            // Tnk_SOYADI
-            // 
-            this.Tnk_SOYADI.Location = new System.Drawing.Point(299, 38);
-            this.Tnk_SOYADI.Name = "Tnk_SOYADI";
-            this.Tnk_SOYADI.Size = new System.Drawing.Size(100, 20);
-            this.Tnk_SOYADI.TabIndex = 16;
-            // 
-            // Tnk_ADI
-            // 
-            this.Tnk_ADI.Location = new System.Drawing.Point(299, 64);
-            this.Tnk_ADI.Name = "Tnk_ADI";
-            this.Tnk_ADI.Size = new System.Drawing.Size(100, 20);
-            this.Tnk_ADI.TabIndex = 16;
             // 
             // Btn_Giris
             // 
@@ -253,9 +214,11 @@
             // Lbl_Menu1
             // 
             this.Lbl_Menu1.AutoSize = true;
+            this.Lbl_Menu1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu1.ForeColor = System.Drawing.Color.Firebrick;
             this.Lbl_Menu1.Location = new System.Drawing.Point(3, 14);
             this.Lbl_Menu1.Name = "Lbl_Menu1";
-            this.Lbl_Menu1.Size = new System.Drawing.Size(110, 13);
+            this.Lbl_Menu1.Size = new System.Drawing.Size(159, 16);
             this.Lbl_Menu1.TabIndex = 0;
             this.Lbl_Menu1.Text = "Kursiyer Dönem Kaydı";
             // 
@@ -269,12 +232,12 @@
             this.B7.ForeColor = System.Drawing.Color.IndianRed;
             this.B7.Image = ((System.Drawing.Image)(resources.GetObject("B7.Image")));
             this.B7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.B7.Location = new System.Drawing.Point(3, 583);
+            this.B7.Location = new System.Drawing.Point(3, 606);
             this.B7.Name = "B7";
             this.B7.Size = new System.Drawing.Size(267, 34);
             this.B7.TabIndex = 8;
             this.B7.Tag = "0";
-            this.B7.Text = "SÖZLEŞME KAYIT";
+            this.B7.Text = "ADRES BİLGİLERİ";
             this.B7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.B7.UseVisualStyleBackColor = false;
             // 
@@ -326,7 +289,7 @@
             this.B4.ForeColor = System.Drawing.Color.IndianRed;
             this.B4.Image = ((System.Drawing.Image)(resources.GetObject("B4.Image")));
             this.B4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.B4.Location = new System.Drawing.Point(6, 298);
+            this.B4.Location = new System.Drawing.Point(6, 283);
             this.B4.Name = "B4";
             this.B4.Size = new System.Drawing.Size(267, 34);
             this.B4.TabIndex = 8;
@@ -338,21 +301,23 @@
             // P7
             // 
             this.P7.BackColor = System.Drawing.Color.Silver;
-            this.P7.Controls.Add(this.label8);
-            this.P7.Location = new System.Drawing.Point(3, 623);
+            this.P7.Controls.Add(this.Lbl_Menu10);
+            this.P7.Location = new System.Drawing.Point(3, 646);
             this.P7.Name = "P7";
-            this.P7.Size = new System.Drawing.Size(267, 49);
+            this.P7.Size = new System.Drawing.Size(267, 39);
             this.P7.TabIndex = 11;
             this.P7.Visible = false;
             // 
-            // label8
+            // Lbl_Menu10
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "content3";
+            this.Lbl_Menu10.AutoSize = true;
+            this.Lbl_Menu10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu10.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu10.Location = new System.Drawing.Point(3, 10);
+            this.Lbl_Menu10.Name = "Lbl_Menu10";
+            this.Lbl_Menu10.Size = new System.Drawing.Size(120, 16);
+            this.Lbl_Menu10.TabIndex = 1;
+            this.Lbl_Menu10.Text = "Kursiyer Bilgileri";
             // 
             // B3
             // 
@@ -364,7 +329,7 @@
             this.B3.ForeColor = System.Drawing.Color.IndianRed;
             this.B3.Image = ((System.Drawing.Image)(resources.GetObject("B3.Image")));
             this.B3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.B3.Location = new System.Drawing.Point(6, 200);
+            this.B3.Location = new System.Drawing.Point(6, 182);
             this.B3.Name = "B3";
             this.B3.Size = new System.Drawing.Size(267, 34);
             this.B3.TabIndex = 8;
@@ -376,21 +341,25 @@
             // P6
             // 
             this.P6.BackColor = System.Drawing.Color.Silver;
-            this.P6.Controls.Add(this.label7);
+            this.P6.Controls.Add(this.Lbl_Menu9);
+            this.P6.Controls.Add(this.Lbl_Menu8);
+            this.P6.Controls.Add(this.Lbl_Menu7);
             this.P6.Location = new System.Drawing.Point(3, 528);
             this.P6.Name = "P6";
-            this.P6.Size = new System.Drawing.Size(267, 49);
+            this.P6.Size = new System.Drawing.Size(267, 89);
             this.P6.TabIndex = 11;
             this.P6.Visible = false;
             // 
-            // label7
+            // Lbl_Menu7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "content3";
+            this.Lbl_Menu7.AutoSize = true;
+            this.Lbl_Menu7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu7.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu7.Location = new System.Drawing.Point(4, 11);
+            this.Lbl_Menu7.Name = "Lbl_Menu7";
+            this.Lbl_Menu7.Size = new System.Drawing.Size(120, 16);
+            this.Lbl_Menu7.TabIndex = 1;
+            this.Lbl_Menu7.Text = "Kursiyer Bilgileri";
             // 
             // B2
             // 
@@ -414,21 +383,23 @@
             // P5
             // 
             this.P5.BackColor = System.Drawing.Color.Silver;
-            this.P5.Controls.Add(this.label6);
+            this.P5.Controls.Add(this.Lbl_Menu6);
             this.P5.Location = new System.Drawing.Point(6, 433);
             this.P5.Name = "P5";
             this.P5.Size = new System.Drawing.Size(267, 49);
             this.P5.TabIndex = 11;
             this.P5.Visible = false;
             // 
-            // label6
+            // Lbl_Menu6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "content3";
+            this.Lbl_Menu6.AutoSize = true;
+            this.Lbl_Menu6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu6.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu6.Location = new System.Drawing.Point(3, 21);
+            this.Lbl_Menu6.Name = "Lbl_Menu6";
+            this.Lbl_Menu6.Size = new System.Drawing.Size(120, 16);
+            this.Lbl_Menu6.TabIndex = 1;
+            this.Lbl_Menu6.Text = "Kursiyer Bilgileri";
             // 
             // B1
             // 
@@ -442,7 +413,7 @@
             this.B1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.B1.Location = new System.Drawing.Point(6, 19);
             this.B1.Name = "B1";
-            this.B1.Size = new System.Drawing.Size(312, 40);
+            this.B1.Size = new System.Drawing.Size(273, 40);
             this.B1.TabIndex = 6;
             this.B1.Tag = "0";
             this.B1.Text = "DÖNEM KAYIT";
@@ -452,79 +423,138 @@
             // P4
             // 
             this.P4.BackColor = System.Drawing.Color.Silver;
-            this.P4.Controls.Add(this.Lbl_Menu7);
-            this.P4.Location = new System.Drawing.Point(6, 338);
+            this.P4.Controls.Add(this.Lbl_Menu5);
+            this.P4.Location = new System.Drawing.Point(6, 323);
             this.P4.Name = "P4";
-            this.P4.Size = new System.Drawing.Size(267, 49);
+            this.P4.Size = new System.Drawing.Size(267, 42);
             this.P4.TabIndex = 11;
             this.P4.Visible = false;
-            // 
-            // Lbl_Menu7
-            // 
-            this.Lbl_Menu7.AutoSize = true;
-            this.Lbl_Menu7.Location = new System.Drawing.Point(3, 21);
-            this.Lbl_Menu7.Name = "Lbl_Menu7";
-            this.Lbl_Menu7.Size = new System.Drawing.Size(49, 13);
-            this.Lbl_Menu7.TabIndex = 1;
-            this.Lbl_Menu7.Text = "content3";
-            // 
-            // P2
-            // 
-            this.P2.BackColor = System.Drawing.Color.Silver;
-            this.P2.Controls.Add(this.Lbl_Menu3);
-            this.P2.Controls.Add(this.Lbl_Menu2);
-            this.P2.Location = new System.Drawing.Point(6, 135);
-            this.P2.Name = "P2";
-            this.P2.Size = new System.Drawing.Size(267, 59);
-            this.P2.TabIndex = 10;
-            this.P2.Visible = false;
-            // 
-            // Lbl_Menu3
-            // 
-            this.Lbl_Menu3.AutoSize = true;
-            this.Lbl_Menu3.Location = new System.Drawing.Point(3, 31);
-            this.Lbl_Menu3.Name = "Lbl_Menu3";
-            this.Lbl_Menu3.Size = new System.Drawing.Size(61, 13);
-            this.Lbl_Menu3.TabIndex = 1;
-            this.Lbl_Menu3.Text = "Resmi Getir";
-            // 
-            // Lbl_Menu2
-            // 
-            this.Lbl_Menu2.AutoSize = true;
-            this.Lbl_Menu2.Location = new System.Drawing.Point(3, 18);
-            this.Lbl_Menu2.Name = "Lbl_Menu2";
-            this.Lbl_Menu2.Size = new System.Drawing.Size(64, 13);
-            this.Lbl_Menu2.TabIndex = 1;
-            this.Lbl_Menu2.Text = "Bilgileri Getir";
-            // 
-            // P3
-            // 
-            this.P3.BackColor = System.Drawing.Color.Silver;
-            this.P3.Controls.Add(this.Lbl_Menu5);
-            this.P3.Controls.Add(this.Lbl_Menu4);
-            this.P3.Location = new System.Drawing.Point(6, 240);
-            this.P3.Name = "P3";
-            this.P3.Size = new System.Drawing.Size(267, 52);
-            this.P3.TabIndex = 11;
-            this.P3.Visible = false;
             // 
             // Lbl_Menu5
             // 
             this.Lbl_Menu5.AutoSize = true;
-            this.Lbl_Menu5.Location = new System.Drawing.Point(3, 13);
+            this.Lbl_Menu5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu5.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu5.Location = new System.Drawing.Point(3, 10);
             this.Lbl_Menu5.Name = "Lbl_Menu5";
-            this.Lbl_Menu5.Size = new System.Drawing.Size(49, 13);
+            this.Lbl_Menu5.Size = new System.Drawing.Size(120, 16);
             this.Lbl_Menu5.TabIndex = 1;
-            this.Lbl_Menu5.Text = "content3";
+            this.Lbl_Menu5.Text = "Kursiyer Bilgileri";
+            // 
+            // P2
+            // 
+            this.P2.BackColor = System.Drawing.Color.Silver;
+            this.P2.Controls.Add(this.Lbl_Menu2);
+            this.P2.Location = new System.Drawing.Point(6, 135);
+            this.P2.Name = "P2";
+            this.P2.Size = new System.Drawing.Size(267, 41);
+            this.P2.TabIndex = 10;
+            this.P2.Visible = false;
+            // 
+            // Lbl_Menu2
+            // 
+            this.Lbl_Menu2.AutoSize = true;
+            this.Lbl_Menu2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu2.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu2.Location = new System.Drawing.Point(3, 18);
+            this.Lbl_Menu2.Name = "Lbl_Menu2";
+            this.Lbl_Menu2.Size = new System.Drawing.Size(120, 16);
+            this.Lbl_Menu2.TabIndex = 1;
+            this.Lbl_Menu2.Text = "Kursiyer Bilgileri";
+            // 
+            // P3
+            // 
+            this.P3.BackColor = System.Drawing.Color.Silver;
+            this.P3.Controls.Add(this.Lbl_Menu4);
+            this.P3.Controls.Add(this.Lbl_Menu3);
+            this.P3.Location = new System.Drawing.Point(6, 222);
+            this.P3.Name = "P3";
+            this.P3.Size = new System.Drawing.Size(267, 55);
+            this.P3.TabIndex = 11;
+            this.P3.Visible = false;
             // 
             // Lbl_Menu4
             // 
             this.Lbl_Menu4.AutoSize = true;
-            this.Lbl_Menu4.Location = new System.Drawing.Point(3, 0);
+            this.Lbl_Menu4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu4.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu4.Location = new System.Drawing.Point(3, 25);
             this.Lbl_Menu4.Name = "Lbl_Menu4";
-            this.Lbl_Menu4.Size = new System.Drawing.Size(49, 13);
+            this.Lbl_Menu4.Size = new System.Drawing.Size(128, 16);
             this.Lbl_Menu4.TabIndex = 1;
-            this.Lbl_Menu4.Text = "content3";
+            this.Lbl_Menu4.Text = "Resimleri Gönder";
+            // 
+            // Lbl_Menu3
+            // 
+            this.Lbl_Menu3.AutoSize = true;
+            this.Lbl_Menu3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu3.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu3.Location = new System.Drawing.Point(3, 0);
+            this.Lbl_Menu3.Name = "Lbl_Menu3";
+            this.Lbl_Menu3.Size = new System.Drawing.Size(120, 16);
+            this.Lbl_Menu3.TabIndex = 1;
+            this.Lbl_Menu3.Text = "Kursiyer Bilgileri";
+            // 
+            // Lbl_Menu8
+            // 
+            this.Lbl_Menu8.AutoSize = true;
+            this.Lbl_Menu8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu8.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu8.Location = new System.Drawing.Point(4, 29);
+            this.Lbl_Menu8.Name = "Lbl_Menu8";
+            this.Lbl_Menu8.Size = new System.Drawing.Size(142, 16);
+            this.Lbl_Menu8.TabIndex = 1;
+            this.Lbl_Menu8.Text = "Sözleşme Ön Sayfa";
+            this.Lbl_Menu8.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // Lbl_Menu9
+            // 
+            this.Lbl_Menu9.AutoSize = true;
+            this.Lbl_Menu9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Menu9.ForeColor = System.Drawing.Color.Brown;
+            this.Lbl_Menu9.Location = new System.Drawing.Point(6, 54);
+            this.Lbl_Menu9.Name = "Lbl_Menu9";
+            this.Lbl_Menu9.Size = new System.Drawing.Size(155, 16);
+            this.Lbl_Menu9.TabIndex = 1;
+            this.Lbl_Menu9.Text = "Sözleşme Arka Sayfa";
+            // 
+            // Button_Aktar
+            // 
+            this.Button_Aktar.Location = new System.Drawing.Point(17, 88);
+            this.Button_Aktar.Name = "Button_Aktar";
+            this.Button_Aktar.Size = new System.Drawing.Size(75, 24);
+            this.Button_Aktar.TabIndex = 19;
+            this.Button_Aktar.Text = "Resim Aktar";
+            this.Button_Aktar.UseVisualStyleBackColor = true;
+            // 
+            // Pic_Web
+            // 
+            this.Pic_Web.Location = new System.Drawing.Point(126, 19);
+            this.Pic_Web.Name = "Pic_Web";
+            this.Pic_Web.Size = new System.Drawing.Size(65, 68);
+            this.Pic_Web.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pic_Web.TabIndex = 17;
+            this.Pic_Web.TabStop = false;
+            // 
+            // Web_Button
+            // 
+            this.Web_Button.Location = new System.Drawing.Point(116, 88);
+            this.Web_Button.Name = "Web_Button";
+            this.Web_Button.Size = new System.Drawing.Size(75, 24);
+            this.Web_Button.TabIndex = 19;
+            this.Web_Button.Text = "Web Resim Aktar";
+            this.Web_Button.UseVisualStyleBackColor = true;
+            // 
+            // Lbl_Ehliyet
+            // 
+            this.Lbl_Ehliyet.AutoSize = true;
+            this.Lbl_Ehliyet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lbl_Ehliyet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Lbl_Ehliyet.Location = new System.Drawing.Point(428, 44);
+            this.Lbl_Ehliyet.Name = "Lbl_Ehliyet";
+            this.Lbl_Ehliyet.Size = new System.Drawing.Size(61, 20);
+            this.Lbl_Ehliyet.TabIndex = 18;
+            this.Lbl_Ehliyet.Text = "ehliyet";
             // 
             // Form_Mebbis_Aktarim
             // 
@@ -533,9 +563,9 @@
             this.ClientSize = new System.Drawing.Size(1428, 881);
             this.Controls.Add(this.Web_Mebbis);
             this.Controls.Add(this.Grp_Menu);
-            this.Controls.Add(this.Grp_1);
             this.Controls.Add(this.Grp_Mebbis);
             this.Controls.Add(this.Btn_Giris);
+            this.Controls.Add(this.Grp_1);
             this.Name = "Form_Mebbis_Aktarim";
             this.Text = "Form_Mebbis_Aktarim";
             this.Grp_1.ResumeLayout(false);
@@ -557,6 +587,7 @@
             this.P2.PerformLayout();
             this.P3.ResumeLayout(false);
             this.P3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Web)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -565,13 +596,9 @@
         private System.Windows.Forms.GroupBox Grp_1;
         private System.Windows.Forms.Button Btn_Giris;
         private System.Windows.Forms.PictureBox Tnk_RESIM_Kursiyer;
-        private System.Windows.Forms.TextBox Tnk_SOYADI;
-        private System.Windows.Forms.TextBox Tnk_ADI;
         private System.Windows.Forms.GroupBox Grp_Mebbis;
         private System.Windows.Forms.Label Lbl_SOYADI;
         private System.Windows.Forms.Label Lbl_ADI;
-        private System.Windows.Forms.Label Lbl_2;
-        private System.Windows.Forms.Label Lbl_1;
         private System.Windows.Forms.Label Lbl_Link;
         private System.Windows.Forms.TextBox Txt_Link;
         private Microsoft.Web.WebView2.WinForms.WebView2 Web_Mebbis;
@@ -584,21 +611,25 @@
         private System.Windows.Forms.Panel P2;
         private System.Windows.Forms.Label Lbl_Menu2;
         private System.Windows.Forms.Panel P3;
-        private System.Windows.Forms.Label Lbl_Menu4;
         private System.Windows.Forms.Label Lbl_Menu3;
         private System.Windows.Forms.Button B5;
         private System.Windows.Forms.Button B4;
         private System.Windows.Forms.Panel P5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Lbl_Menu6;
         private System.Windows.Forms.Panel P4;
-        private System.Windows.Forms.Label Lbl_Menu7;
+        private System.Windows.Forms.Label Lbl_Menu5;
         private System.Windows.Forms.Button B7;
         private System.Windows.Forms.Button B6;
         private System.Windows.Forms.Panel P7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Lbl_Menu10;
         private System.Windows.Forms.Panel P6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label Lbl_Menu5;
-        private System.Windows.Forms.Button Btn_Mebbisegir;
+        private System.Windows.Forms.Label Lbl_Menu7;
+        private System.Windows.Forms.Label Lbl_Menu4;
+        private System.Windows.Forms.Label Lbl_Menu9;
+        private System.Windows.Forms.Label Lbl_Menu8;
+        private System.Windows.Forms.Button Button_Aktar;
+        private System.Windows.Forms.PictureBox Pic_Web;
+        private System.Windows.Forms.Button Web_Button;
+        private System.Windows.Forms.Label Lbl_Ehliyet;
     }
 }

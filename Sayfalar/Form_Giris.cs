@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarantula_MTSK.Models;
@@ -62,7 +63,25 @@ namespace Tarantula_MTSK.Sayfalar
 
                 if (isValid)
                 {
-                    // Ana Menü sayfasına yönlendir
+                    // 1- Lisans bilgilerini al
+                    LisansService lisansService = new LisansService(_serverAyar.ConnectionString);
+                    var lisans = lisansService.GetLisans();
+
+                    // 2- Lisans kontrol et
+                    LicenseManager.CheckLicense(lisans);
+
+                    // 3- Lisans geçersizse uyarı ver (demo)
+                    if (!LicenseManager.IsLicensed)
+                    {
+                        MessageBox.Show(
+                            "Demo sürümü kullanıyorsunuz.\nLisans süreniz dolmuş olabilir.\nİletişime geçiniz.",
+                            "Lisans Uyarısı",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                    }
+
+                    // 4- Ana menüye yönlendir
                     Ana_Menu anaMenu = new Ana_Menu(_serverAyar);
                     anaMenu.Show();
                     this.Hide();
