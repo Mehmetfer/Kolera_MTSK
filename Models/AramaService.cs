@@ -181,36 +181,45 @@ END";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@EkskOgrBel", evrak.EkskOgrBel ? "VAR" : "YOK");
-                        cmd.Parameters.AddWithValue("@EkskSaglik", evrak.EkskSaglik ? "VAR" : "YOK");
-                        cmd.Parameters.AddWithValue("@EkskSavcilik", evrak.EkskSavcilik ? "VAR" : "YOK");
-                        cmd.Parameters.AddWithValue("@EkskSozlesme", evrak.EkskSozlesme ? "VAR" : "YOK");
-                        cmd.Parameters.AddWithValue("@EkskImza", evrak.EkskImza ? "VAR" : "YOK");
-                        cmd.Parameters.AddWithValue("@ID_Kursiyer", evrak.ID_Kursiyer);
-                        cmd.Parameters.AddWithValue("@OgrBelgeTuru", (object)evrak.OgrBelgeTuru ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@OgrBelgeVerenKurum", (object)evrak.OgrBelgeVerenKurum ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@OgrBelgeSayisi", (object)evrak.OgrBelgeSayisi ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@SaglikBelgeNo", (object)evrak.SaglikBelgeNo ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@SaglikBelverenKurum", (object)evrak.SaglikBelverenKurum ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@SaglikBelReferans", (object)evrak.SaglikBelReferans ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@SavcilikBelgeNo", (object)evrak.SavcilikBelgeNo ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@SavcilikBelgeVerenKurum", (object)evrak.SavcilikBelgeVerenKurum ?? DBNull.Value);
+                        // 🔹 Boolean alanlar -> CHAR(3)
+                        cmd.Parameters.Add("@EkskOgrBel", SqlDbType.Char, 3).Value = evrak.EkskOgrBel ? "VAR" : "YOK";
+                        cmd.Parameters.Add("@EkskSaglik", SqlDbType.Char, 3).Value = evrak.EkskSaglik ? "VAR" : "YOK";
+                        cmd.Parameters.Add("@EkskSavcilik", SqlDbType.Char, 3).Value = evrak.EkskSavcilik ? "VAR" : "YOK";
+                        cmd.Parameters.Add("@EkskSozlesme", SqlDbType.Char, 3).Value = evrak.EkskSozlesme ? "VAR" : "YOK";
+                        cmd.Parameters.Add("@EkskImza", SqlDbType.Char, 3).Value = evrak.EkskImza ? "VAR" : "YOK";
 
-                        cmd.Parameters.Add("@OgrBelgeTarihi", SqlDbType.Date).Value =
+                        // 🔹 ID
+                        cmd.Parameters.Add("@ID_Kursiyer", SqlDbType.Int).Value = evrak.ID_Kursiyer;
+
+                        // 🔹 String alanlar
+                        cmd.Parameters.Add("@OgrBelgeTuru", SqlDbType.NVarChar, 50).Value = (object)evrak.OgrBelgeTuru ?? DBNull.Value;
+                        cmd.Parameters.Add("@OgrBelgeVerenKurum", SqlDbType.NVarChar, 100).Value = (object)evrak.OgrBelgeVerenKurum ?? DBNull.Value;
+                        cmd.Parameters.Add("@OgrBelgeSayisi", SqlDbType.NVarChar, 10).Value = (object)evrak.OgrBelgeSayisi ?? DBNull.Value;
+
+                        cmd.Parameters.Add("@SaglikBelgeNo", SqlDbType.NVarChar, 50).Value = (object)evrak.SaglikBelgeNo ?? DBNull.Value;
+                        cmd.Parameters.Add("@SaglikBelverenKurum", SqlDbType.NVarChar, 100).Value = (object)evrak.SaglikBelverenKurum ?? DBNull.Value;
+                        cmd.Parameters.Add("@SaglikBelReferans", SqlDbType.NVarChar, 50).Value = (object)evrak.SaglikBelReferans ?? DBNull.Value;
+
+                        cmd.Parameters.Add("@SavcilikBelgeNo", SqlDbType.NVarChar, 50).Value = (object)evrak.SavcilikBelgeNo ?? DBNull.Value;
+                        cmd.Parameters.Add("@SavcilikBelgeVerenKurum", SqlDbType.NVarChar, 100).Value = (object)evrak.SavcilikBelgeVerenKurum ?? DBNull.Value;
+
+                        // 🔹 Tarihler
+                        cmd.Parameters.Add("@OgrBelgeTarihi", SqlDbType.DateTime).Value =
                             evrak.OgrBelgeTarihi.HasValue ? (object)evrak.OgrBelgeTarihi.Value : DBNull.Value;
 
-                        cmd.Parameters.Add("@SaglikBelgeTarihi", SqlDbType.Date).Value =
+                        cmd.Parameters.Add("@SaglikBelgeTarihi", SqlDbType.DateTime).Value =
                             evrak.SaglikBelgeTarihi.HasValue ? (object)evrak.SaglikBelgeTarihi.Value : DBNull.Value;
 
-                        cmd.Parameters.Add("@SavcilikBelgeTarihi", SqlDbType.Date).Value =
+                        cmd.Parameters.Add("@SavcilikBelgeTarihi", SqlDbType.DateTime).Value =
                             evrak.SavcilikBelgeTarihi.HasValue ? (object)evrak.SavcilikBelgeTarihi.Value : DBNull.Value;
 
-                        cmd.Parameters.AddWithValue("@ImgOgrBel", (object)evrak.ImgOgrBel ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgSaglik", (object)evrak.ImgSaglik ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgSavcilik", (object)evrak.ImgSavcilik ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgSozlesme_On", (object)evrak.ImgSozlesme_On ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgSozlesme_Arka", (object)evrak.ImgSozlesme_Arka ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ImgImza", (object)evrak.ImgImza ?? DBNull.Value);
+                        // 🔹 Resimler
+                        cmd.Parameters.Add("@ImgOgrBel", SqlDbType.VarBinary, -1).Value = (object)evrak.ImgOgrBel ?? DBNull.Value;
+                        cmd.Parameters.Add("@ImgSaglik", SqlDbType.VarBinary, -1).Value = (object)evrak.ImgSaglik ?? DBNull.Value;
+                        cmd.Parameters.Add("@ImgSavcilik", SqlDbType.VarBinary, -1).Value = (object)evrak.ImgSavcilik ?? DBNull.Value;
+                        cmd.Parameters.Add("@ImgSozlesme_On", SqlDbType.VarBinary, -1).Value = (object)evrak.ImgSozlesme_On ?? DBNull.Value;
+                        cmd.Parameters.Add("@ImgSozlesme_Arka", SqlDbType.VarBinary, -1).Value = (object)evrak.ImgSozlesme_Arka ?? DBNull.Value;
+                        cmd.Parameters.Add("@ImgImza", SqlDbType.VarBinary, -1).Value = (object)evrak.ImgImza ?? DBNull.Value;
 
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
