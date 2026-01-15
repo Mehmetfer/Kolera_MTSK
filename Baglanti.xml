@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServerAyar>
-	<Sunucu>DESKTOP-8F0C5UI\SQLEXPRESS</Sunucu>
-	<BaglantiTuru>Windows</BaglantiTuru>
-	<KullaniciAdi>sa</KullaniciAdi>
-	<Parola>1597531</Parola>
-	<VeritabaniAdi>PROX_A_MTSK_2162</VeritabaniAdi>
+	<Sunucu>(LocalDB)\MSSQLLocalDB</Sunucu>
+	<BaglantiTuru>AttachDbFilename</BaglantiTuru>
+	<KullaniciAdi />
+	<Parola />
+	<VeritabaniAdi>D:\Tarantula_MTSK\Datebase\Surucu_Kursu_Data.mdf</VeritabaniAdi>
 </ServerAyar>

@@ -4,7 +4,7 @@
   <Import Project="packages\FastReport.OpenSource.2026.1.2\build\FastReport.OpenSource.props" Condition="Exists('packages\FastReport.OpenSource.2026.1.2\build\FastReport.OpenSource.props')" />
   <PropertyGroup>
     <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>D:\Tarantula_MTSK\Setup\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -14,7 +14,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -74,7 +74,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -314,7 +314,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormLisansHelper.cs" />
+    <Compile Include="Models\Lisans.cs" />
     <Compile Include="Models\AracService.cs" />
     <Compile Include="Models\Arac_Model.cs" />
     <Compile Include="Models\AramaService.cs" />
@@ -332,13 +332,15 @@
     <Compile Include="Models\Kursiyer_Model.cs" />
     <Compile Include="Models\Kurs_Ayar_Model.cs" />
     <Compile Include="Models\Kurs_Ayar_Service.cs" />
-    <Compile Include="Models\LicenseManager.cs" />
+    <Compile Include="Models\LisansDurum.cs" />
     <Compile Include="Models\LisansService.cs" />
-    <Compile Include="Models\Lisans_Model.cs" />
     <Compile Include="Models\MebbisService.cs" />
     <Compile Include="Models\Mebbis_Model.cs" />
     <Compile Include="Models\PersonelService.cs" />
     <Compile Include="Models\Personel_Model.cs" />
+    <Compile Include="Models\Sayfa_Tasarimi.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Models\Scanner.cs" />
     <Compile Include="Models\ServerAyar.cs" />
     <Compile Include="Program.cs" />
@@ -353,6 +355,24 @@
     </Compile>
     <Compile Include="Sayfalar\Ana_Menu.Designer.cs">
       <DependentUpon>Ana_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sayfalar\Form_Sifre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sayfalar\Form_Sifre.Designer.cs">
+      <DependentUpon>Form_Sifre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sayfalar\Frm_Baslangic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sayfalar\Frm_Baslangic.Designer.cs">
+      <DependentUpon>Frm_Baslangic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sayfalar\Frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sayfalar\Frm_Login.Designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Sayfalar\Form_Araclar.cs">
       <SubType>Form</SubType>
@@ -531,6 +551,12 @@
     <EmbeddedResource Include="Sayfalar\Form_Yedek.resx">
       <DependentUpon>Form_Yedek.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sayfalar\Frm_Baslangic.resx">
+      <DependentUpon>Frm_Baslangic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sayfalar\Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sayfalar\Server.resx">
       <DependentUpon>Server.cs</DependentUpon>
     </EmbeddedResource>
@@ -690,14 +716,7 @@
     <None Include="Resources\Kusak.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Direk_Database_Baglanti.xml" />
     <Content Include="Baglanti.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Datebase\TARANTULA_MTSK2025.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Datebase\TARANTULA_MTSK2025_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\default_avatar.JPG" />
@@ -755,6 +774,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Datebase\" />
     <Folder Include="Raporlar\" />
     <Folder Include="Repository\" />
     <Folder Include="Scanner\" />
