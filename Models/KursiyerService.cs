@@ -97,7 +97,7 @@ namespace Tarantula_MTSK.Services
                 await cmd.ExecuteNonQueryAsync();
             }
         }
-       
+
         public async Task DeleteKursiyerAsync(int id)
         {
             using (var conn = new SqlConnection(_connectionString))
@@ -108,15 +108,15 @@ namespace Tarantula_MTSK.Services
                 await cmd.ExecuteNonQueryAsync();
             }
         }
-       
-       
-        
-       
-        }
 
 
 
 
     }
+
+
+
+
+}
 
 

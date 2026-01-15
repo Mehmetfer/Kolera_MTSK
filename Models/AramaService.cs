@@ -23,7 +23,14 @@ namespace Tarantula_MTSK.Services
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
-                string sql = @"SELECT TOP 20 * FROM KURSIYER ORDER BY ID DESC";
+                string sql = @"
+SELECT TOP 120 
+    K.*,
+    GK.DONEM_ADI AS DONEM
+FROM KURSIYER K
+LEFT JOIN GRUP_KARTI GK ON K.ID_GRUP_KARTI = GK.ID
+ORDER BY K.ID DESC";
+
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     await conn.OpenAsync();
@@ -37,17 +44,24 @@ namespace Tarantula_MTSK.Services
             }
         }
 
+    
+
+
         // 🔹 Arama: Adı, Soyadı, TC, AdıSoyadı birleşik
-        public async Task<DataTable> SearchKursiyerAsync(string keyword)
+       
+public async Task<DataTable> SearchKursiyerAsync(string keyword)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 string sql = @"
-SELECT * FROM KURSIYER 
-WHERE UPPER(ADI) LIKE UPPER(@keyword) 
-   OR UPPER(SOYADI) LIKE UPPER(@keyword) 
-   OR TC_NO LIKE @keyword
-   OR UPPER(ADI + ' ' + SOYADI) LIKE UPPER(@keyword)";
+SELECT K.*, GK.DONEM_ADI AS DONEM
+FROM KURSIYER K
+LEFT JOIN GRUP_KARTI GK ON K.ID_GRUP_KARTI = GK.ID
+WHERE UPPER(K.ADI) LIKE UPPER(@keyword) 
+   OR UPPER(K.SOYADI) LIKE UPPER(@keyword) 
+   OR K.TC_NO LIKE @keyword
+   OR UPPER(CONCAT(K.ADI, ' ', K.SOYADI)) LIKE UPPER(@keyword)
+ORDER BY K.ID DESC";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -61,6 +75,9 @@ WHERE UPPER(ADI) LIKE UPPER(@keyword)
                     }
                 }
             }
+        
+
+            
         }
 
         // 🔹 Kursiyer resmini getir

@@ -64,9 +64,33 @@ namespace Tarantula_MTSK.Models
 
         public int Id { get; set; }
         public string DonemAdi { get; set; }
-    
 
-public class SertifikaSinifi
+        public bool EksikOgrBel { get; set; } = false;
+        public bool EksikSaglik { get; set; } = false;
+        public bool EksikSavcilik { get; set; } = false;
+        public bool EksikSozlesme { get; set; } = false;
+        public bool EksikImza { get; set; } = false;
+        public string OgrBelgeTuru { get; set; }          // Cmb_OGR_BEL_TURU
+        
+
+        // Yeni alanlar eklendi
+        public string SaglikBelgeNo { get; set; }
+        public string SaglikBelverenKurum { get; set; }
+        public string SaglikBelReferans { get; set; }
+        public DateTime? SaglikBelgeTarihi { get; set; }
+        public byte[] ImgSaglik { get; set; }
+
+        public string SavcilikBelgeNo { get; set; }
+        public string SavcilikBelgeVerenKurum { get; set; }
+        public DateTime? SavcilikBelgeTarihi { get; set; }
+        public byte[] ImgSavcilik { get; set; }
+
+        public byte[] ImgImza { get; set; }
+        public byte[] ImgSozlesme_On { get; set; }
+        public byte[] ImgSozlesme_Arka { get; set; }
+        // Geri kalan propertyleriniz...
+
+        public class SertifikaSinifi
     {
         public string SinifAdi { get; set; }
     }

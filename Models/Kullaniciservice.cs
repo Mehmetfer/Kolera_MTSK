@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using System.Data;
 
 namespace Tarantula_MTSK.Services
 {
@@ -12,74 +11,86 @@ namespace Tarantula_MTSK.Services
 
         public KullaniciService(string connectionString)
         {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception("ConnectionString BOŞ!");
             _connectionString = connectionString;
         }
 
-        // Kullanıcı adı ve şifre doğrulaması yapar
+        /// <summary>
+        /// Kullanıcı adlarını getir
+        /// </summary>
+        public async Task<List<string>> GetKullaniciAdlariAsync()
+        {
+            List<string> liste = new List<string>();
+
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                await con.OpenAsync();
+                string sql = "SELECT KULLANICI_ADI FROM KULLANICI";
+
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                using (var dr = await cmd.ExecuteReaderAsync())
+                {
+                    while (await dr.ReadAsync())
+                    {
+                        if (!dr.IsDBNull(0))
+                            liste.Add(dr.GetString(0));
+                    }
+                }
+            }
+
+            return liste;
+        }
+
+        /// <summary>
+        /// Kullanıcı + parola kontrolü
+        /// </summary>
         public async Task<bool> IsValidKullanici(string kullaniciAdi, string parola)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                using (SqlConnection con = new SqlConnection(_connectionString))
                 {
-                    await connection.OpenAsync();
+                    await con.OpenAsync();
 
-                    string query = "SELECT TOP 1 1 FROM KULLANICI WHERE KULLANICI_ADI = @KullaniciAdi AND KULLANICI_SIFRE = @Parola";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    // 🔥 ADMİN özel durumu (şifre boşsa)
+                    if (kullaniciAdi.ToUpper() == "ADMİN" && string.IsNullOrWhiteSpace(parola))
                     {
-                        command.Parameters.Add("@KullaniciAdi", SqlDbType.NVarChar).Value = kullaniciAdi;
-                        command.Parameters.Add("@Parola", SqlDbType.NVarChar).Value = parola;
+                        string adminSql =
+                            "SELECT COUNT(*) FROM KULLANICI WHERE KULLANICI_ADI = 'ADMİN'";
 
-                        var result = await command.ExecuteScalarAsync();
-                        return result != null; // Eğer bir sonuç dönerse kullanıcı geçerlidir
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError(ex);  // Hata loglama işlemi
-                throw new InvalidOperationException("Veritabanı bağlantısında bir hata oluştu.");
-            }
-        }
-
-        // Kullanıcı adlarını yükler (Login ekranında comboBox için)
-        public async Task<List<string>> GetKullaniciAdlariAsync()
-        {
-            var kullaniciAdlari = new List<string>();
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
-                {
-                    await connection.OpenAsync();
-
-                    string query = "SELECT KULLANICI_ADI FROM KULLANICI";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        SqlDataReader reader = await command.ExecuteReaderAsync();
-
-                        while (await reader.ReadAsync())
+                        using (SqlCommand adminCmd = new SqlCommand(adminSql, con))
                         {
-                            kullaniciAdlari.Add(reader["KULLANICI_ADI"].ToString());
+                            int adminCount = (int)await adminCmd.ExecuteScalarAsync();
+                            return adminCount > 0;
                         }
                     }
+
+                    // 🔐 Normal kullanıcılar (Base64 kontrol)
+                    string sql =
+                        @"SELECT COUNT(*) 
+                  FROM KULLANICI
+                  WHERE KULLANICI_ADI=@u
+                  AND KULLANICI_SIFRE=@p;";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@u", kullaniciAdi);
+                        cmd.Parameters.AddWithValue("@p", KullaniciAuth.EncodeBase64(parola));
+
+                        int sonuc = (int)await cmd.ExecuteScalarAsync();
+                        return sonuc > 0;
+                    }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                LogError(ex);  // Hata loglama işlemi
-                throw new InvalidOperationException("Veritabanından kullanıcı adı alınırken bir hata oluştu.");
+                return false;
             }
-
-            return kullaniciAdlari;
         }
 
-        // Hata loglama metodu
-        private void LogError(Exception ex)
-        {
-            // Burada hata loglamayı gerçekleştirebilirsiniz (Dosyaya, Veritabanına, Log sistemine)
-            // Örneğin:
-            Console.WriteLine($"Error: {ex.Message}\n{ex.StackTrace}");
-        }
     }
+
 }
+
+

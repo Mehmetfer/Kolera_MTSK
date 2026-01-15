@@ -85,11 +85,19 @@ namespace Tarantula_MTSK.Services
         {
             using (var conn = new SqlConnection(_connectionString))
             using (var cmd = new SqlCommand(@"
-                INSERT INTO KURSIYER 
-                (ADI, SOYADI, ID_GRUP_KARTI, SERTIFIKA_SINIFI, ONCE_SERT_SINIFI, TC_NO, DOGUM_TARIHI, KAYIT_TARIHI, ADAY_NO, RESIM, KURSIYER_DURUMU )
-                VALUES
-                (@ADI, @SOYADI, @ID_GRUP_KARTI, @SERTIFIKA_SINIFI, @ONCE_SERT_SINIFI, @TC_NO, @DOGUM_TARIHI, @KAYIT_TARIHI, @ADAY_NO, @RESIM, @KURSIYER_DURUMU );
-                SELECT SCOPE_IDENTITY();", conn))
+        INSERT INTO KURSIYER 
+        (ADI, SOYADI, ID_GRUP_KARTI, SERTIFIKA_SINIFI, ONCE_SERT_SINIFI, TC_NO, DOGUM_TARIHI, KAYIT_TARIHI, ADAY_NO, RESIM, 
+         SaglikBelgeNo, SaglikBelverenKurum, SaglikBelReferans, SaglikBelgeTarihi, ImgSaglik,
+         SavcilikBelgeNo, SavcilikBelgeVerenKurum, SavcilikBelgeTarihi, ImgSavcilik,
+         ImgImza, ImgSozlesme_On, ImgSozlesme_Arka,
+         KURSIYER_DURUMU )
+        VALUES
+        (@ADI, @SOYADI, @ID_GRUP_KARTI, @SERTIFIKA_SINIFI, @ONCE_SERT_SINIFI, @TC_NO, @DOGUM_TARIHI, @KAYIT_TARIHI, @ADAY_NO, @RESIM,
+         @SaglikBelgeNo, @SaglikBelverenKurum, @SaglikBelReferans, @SaglikBelgeTarihi, @ImgSaglik,
+         @SavcilikBelgeNo, @SavcilikBelgeVerenKurum, @SavcilikBelgeTarihi, @ImgSavcilik,
+         @ImgImza, @ImgSozlesme_On, @ImgSozlesme_Arka,
+         @KURSIYER_DURUMU );
+        SELECT SCOPE_IDENTITY();", conn))
             {
                 cmd.Parameters.AddWithValue("@ADI", model.ADI ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@SOYADI", model.SOYADI ?? (object)DBNull.Value);
@@ -101,6 +109,25 @@ namespace Tarantula_MTSK.Services
                 cmd.Parameters.AddWithValue("@KAYIT_TARIHI", model.KAYIT_TARIHI ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@ADAY_NO", model.ADAY_NO);
                 cmd.Parameters.AddWithValue("@RESIM", model.RESIM ?? (object)DBNull.Value);
+
+                // Sağlık belgeleri
+                cmd.Parameters.AddWithValue("@SaglikBelgeNo", model.SaglikBelgeNo ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@SaglikBelverenKurum", model.SaglikBelverenKurum ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@SaglikBelReferans", model.SaglikBelReferans ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@SaglikBelgeTarihi", model.SaglikBelgeTarihi ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@ImgSaglik", model.ImgSaglik ?? (object)DBNull.Value);
+
+                // Savcılık belgeleri
+                cmd.Parameters.AddWithValue("@SavcilikBelgeNo", model.SavcilikBelgeNo ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@SavcilikBelgeVerenKurum", model.SavcilikBelgeVerenKurum ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@SavcilikBelgeTarihi", model.SavcilikBelgeTarihi ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@ImgSavcilik", model.ImgSavcilik ?? (object)DBNull.Value);
+
+                // İmza ve sözleşme
+                cmd.Parameters.AddWithValue("@ImgImza", model.ImgImza ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@ImgSozlesme_On", model.ImgSozlesme_On ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@ImgSozlesme_Arka", model.ImgSozlesme_Arka ?? (object)DBNull.Value);
+
                 cmd.Parameters.AddWithValue("@KURSIYER_DURUMU", model.KURSIYER_DURUMU);
 
                 await conn.OpenAsync();
@@ -108,5 +135,7 @@ namespace Tarantula_MTSK.Services
                 return Convert.ToInt32(result);
             }
         }
+
     }
 }
+
